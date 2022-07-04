@@ -1,1 +1,0 @@
-# cap-ebranding-store-frontend
