@@ -13,5 +13,12 @@ class UserService {
     console.log("inside service" + JSON.stringify(user));
     return axios.post(this.baseUrl, user);
   }
+
+  validateUser(loginCred) {
+    console.log("inside service" + JSON.stringify(loginCred));
+    var res = axios.post(this.baseUrl + "/login", loginCred);
+    console.log(res);
+    return res;
+  }
 }
 export default UserService;
