@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
-import Header from "../components/Header";
 
 const Home = () => {
   const container = useRef(null);

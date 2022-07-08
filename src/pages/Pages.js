@@ -14,9 +14,11 @@ function Pages() {
         <Header />
 
         <Routes>
-          <Route exact path="/login" element={<Authentication />}></Route>
-          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/" element={<Authentication />}></Route>
+          <Route exact path="/home" element={<Home />}></Route>
           <Route exact path="/orders" element={<Order />}></Route>
+          <Route exact path="/cart" element={<Cart />}></Route>
+          <Route exact path="/admin" element={<Admin />}></Route>
         </Routes>
       </Router>
     </div>

@@ -4,6 +4,7 @@ import {
   SELECT_CART,
   SELECT_ORDERS,
   SELECT_PROFILE,
+  IS_LOGGED_IN,
 } from "./CommonTypes";
 
 const initialState = {
@@ -12,6 +13,10 @@ const initialState = {
   orders: false,
   cart: false,
   profile: false,
+  login:
+    localStorage.getItem("login") == null
+      ? false
+      : localStorage.getItem("login"),
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +29,10 @@ const reducer = (state = initialState, action) => {
         orders: false,
         cart: false,
         profile: false,
+        login:
+          localStorage.getItem("login") == null
+            ? false
+            : localStorage.getItem("login"),
       };
     case SELECT_CATEGORIES:
       return {
@@ -33,6 +42,10 @@ const reducer = (state = initialState, action) => {
         orders: false,
         cart: false,
         profile: false,
+        login:
+          localStorage.getItem("login") == null
+            ? false
+            : localStorage.getItem("login"),
       };
     case SELECT_ORDERS:
       return {
@@ -42,6 +55,10 @@ const reducer = (state = initialState, action) => {
         orders: true,
         cart: false,
         profile: false,
+        login:
+          localStorage.getItem("login") == null
+            ? false
+            : localStorage.getItem("login"),
       };
     case SELECT_CART:
       return {
@@ -51,6 +68,10 @@ const reducer = (state = initialState, action) => {
         orders: false,
         cart: true,
         profile: false,
+        login:
+          localStorage.getItem("login") == null
+            ? false
+            : localStorage.getItem("login"),
       };
     case SELECT_PROFILE:
       return {
@@ -60,6 +81,23 @@ const reducer = (state = initialState, action) => {
         orders: false,
         cart: false,
         profile: true,
+        login:
+          localStorage.getItem("login") == null
+            ? false
+            : localStorage.getItem("login"),
+      };
+    case IS_LOGGED_IN:
+      return {
+        ...state,
+        home: false,
+        categories: false,
+        orders: false,
+        cart: false,
+        profile: true,
+        login:
+          localStorage.getItem("login") == null
+            ? false
+            : localStorage.getItem("login"),
       };
     default:
       return state;

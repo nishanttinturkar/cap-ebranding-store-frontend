@@ -4,6 +4,7 @@ import {
   SELECT_CART,
   SELECT_ORDERS,
   SELECT_PROFILE,
+  IS_LOGGED_IN,
 } from "./CommonTypes";
 
 export const selectHome = () => {
@@ -33,5 +34,11 @@ export const selectCart = () => {
 export const selectProfile = () => {
   return {
     type: SELECT_PROFILE,
+  };
+};
+
+export const isLoggedIn = () => {
+  return {
+    type: IS_LOGGED_IN,
   };
 };

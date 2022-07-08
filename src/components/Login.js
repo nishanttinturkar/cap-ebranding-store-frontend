@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import LoginModel from "../model/LoginModel";
 import UserService from "../service/UserService";
+import { useSelector, useDispatch } from "react-redux";
+import { isLoggedIn, selectHome } from "../redux/common/CommonActions";
 
 function Login() {
+  let dispatch = useDispatch();
   const navigate = useNavigate();
+  const navSelector = useSelector((state) => state.navSelector);
   let service = new UserService();
   const [state, setState] = useState({ loginCred: new LoginModel() });
   return (
@@ -57,8 +61,9 @@ function Login() {
                 localStorage.setItem("login", true);
                 var stored = localStorage.getItem("userID");
                 console.log(stored);
-
-                navigate("/");
+                dispatch(selectHome());
+                console.log(navSelector.login);
+                navigate("/home");
               })
               .catch((error2) => {
                 alert(error2);

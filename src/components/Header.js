@@ -13,9 +13,9 @@ const Header = () => {
   const navigate = useNavigate();
   const navSelector = useSelector((state) => state.navSelector);
 
-  const redirect = () => {
-    dispatch(selectOrders());
-    navigate("/orders");
+  const redirect = (navFunc, here) => {
+    dispatch(navFunc);
+    navigate(here);
   };
 
   return (
@@ -35,25 +35,14 @@ const Header = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">
-            Search
-          </button>
-        </form>
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <a
                 className={navSelector.home ? "nav-link active" : "nav-link"}
-                onClick={() => dispatch(selectHome())}
+                onClick={() => redirect(selectHome(), "/")}
                 aria-current="page"
-                href="/"
               >
                 Home
               </a>
@@ -63,8 +52,7 @@ const Header = () => {
                 className={
                   navSelector.categories ? "nav-link active" : "nav-link"
                 }
-                onClick={() => dispatch(selectCategories())}
-                href="/categories"
+                onClick={() => redirect(selectCategories(), "/categories")}
               >
                 Categories
               </a>
@@ -72,7 +60,7 @@ const Header = () => {
             <li className="nav-item">
               <a
                 className={navSelector.orders ? "nav-link active" : "nav-link"}
-                onClick={redirect}
+                onClick={() => redirect(selectOrders(), "/orders")}
               >
                 Orders
               </a>
@@ -80,21 +68,55 @@ const Header = () => {
             <li className="nav-item">
               <a
                 className={navSelector.cart ? "nav-link active" : "nav-link"}
-                onClick={() => dispatch(selectCart())}
-                href="/cart"
+                onClick={() => redirect(selectCart(), "/cart")}
               >
                 Cart
               </a>
             </li>
 
-            <li className="nav-item">
+            <li class="nav-item dropdown">
               <a
-                className={navSelector.profile ? "nav-link active" : "nav-link"}
-                onClick={() => dispatch(selectProfile())}
-                href="/profile"
+                className={
+                  navSelector.profile
+                    ? "nav-link dropdown-toggle active"
+                    : "nav-link dropdown-toggle"
+                }
+                id="navbarDarkDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
                 Profile
               </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="navbarDarkDropdownMenuLink"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    onClick={() => redirect(selectProfile(), "/profile")}
+                  >
+                    View Profile
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    onClick={() => redirect(selectProfile(), "/Admin")}
+                  >
+                    Admin Panal
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    onClick={() => redirect(selectProfile(), "/")}
+                  >
+                    Logout
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
