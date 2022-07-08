@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import LoginModel from "../model/LoginModel";
 import UserService from "../service/UserService";
 
@@ -11,8 +10,6 @@ function Login() {
   return (
     <form>
       <div>
-        <h2>Login</h2>
-        <br />
         <label>Office Email Address</label>
         <input
           className="form-control"
@@ -49,21 +46,26 @@ function Login() {
         />
         <br />
         <button
-          className="btn btn-outline-primary mt-3"
+          className="btn primary-btn"
           onClick={(e) => {
             e.preventDefault();
             service
               .validateUser(state.loginCred)
               .then((result) => {
                 alert("User Logged in successfully!!");
-                navigate("/users");
+                localStorage.setItem("userID", JSON.stringify(result.data.id));
+                localStorage.setItem("login", true);
+                var stored = localStorage.getItem("userID");
+                console.log(stored);
+
+                navigate("/");
               })
               .catch((error2) => {
                 alert(error2);
               });
           }}
         >
-          Add User
+          Login
         </button>
       </div>
     </form>

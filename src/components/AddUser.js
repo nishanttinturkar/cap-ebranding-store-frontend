@@ -5,14 +5,13 @@ import User from "../model/User";
 import UserService from "../service/UserService";
 
 function AddUser() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   let service = new UserService();
   const [state, setState] = useState({ user: new User() });
   return (
     <div className="container">
       <form>
         <div>
-          <h2>Create User</h2>
           <div className="row">
             <div className="col">
               <label>First Name</label>
@@ -84,7 +83,7 @@ function AddUser() {
           />
           <br />
           <div className="row">
-            <label className="col-sm-2">Gender:</label>
+            <label className="col">Gender:</label>
             <div className="form-check col">
               <input
                 className="form-check-input"
@@ -180,21 +179,21 @@ function AddUser() {
             </div>
           </div>
           <button
-            className="btn btn-outline-primary mt-3"
+            className="btn primary-btn mt-3"
             onClick={(e) => {
               e.preventDefault();
               service
                 .addUser(state.user)
                 .then((result) => {
                   alert("User added into db.");
-                  navigate("/users");
+                  //  navigate("/users");
                 })
                 .catch((error2) => {
                   alert(error2);
                 });
             }}
           >
-            Add User
+            Register
           </button>
         </div>
       </form>

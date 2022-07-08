@@ -10,10 +10,6 @@ function App() {
     <div className="container-fluid">
       <Pages />
       {/* <Router>
-        <Header
-          title="Cap eBranding Store"
-          description="This is a online store website for cap employees"
-        />
         <Link to={`/users`}>Get Users</Link>
         <br />
         <Link to={`/user/add`}> Add User</Link>
@@ -25,14 +21,14 @@ function App() {
           <Route exact path="/" component={ShowUser} />
           <Route exact path="/users" element={<ShowUser />} />
           <Route exact path="/user/add" element={<AddUser />} />
-          <Route exact path="/user/login" element={<Login />} />
-          {/* <Route
+          <Route exact path="/user/login" element={<Login />} /> */}
+      {/* <Route
             exact
             path="/employees/update/:empId"
             element={<UpdateEmployee />}
           /> */}
-      {/* </Routes> */}
-      {/* </Router> */}
+      {/* </Routes>
+      </Router> */}
     </div>
   );
 }

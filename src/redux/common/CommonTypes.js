@@ -1,0 +1,5 @@
+export const SELECT_HOME = "SELECT_HOME";
+export const SELECT_CATEGORIES = "SELECT_CATEGORIES";
+export const SELECT_CART = "SELECT_CART";
+export const SELECT_ORDERS = "SELECT_ORDERS";
+export const SELECT_PROFILE = "SELECT_PROFILE";

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import Header from "../components/Header";
 
-function Home() {
+const Home = () => {
   const container = useRef(null);
   useEffect(() => {
     lottie.loadAnimation({
@@ -14,7 +14,6 @@ function Home() {
   }, []);
   return (
     <div className="banner">
-      <Header />
       <div className="container">
         <div className="row">
           <div className="col">
@@ -28,6 +27,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

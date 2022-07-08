@@ -3,8 +3,7 @@ class UserService {
   baseUrl = `http://localhost:8091/store/user`;
 
   getAllUsers() {
-    alert("inside get all users");
-    var res = axios.get(this.baseUrl + "/129");
+    var res = axios.get(this.baseUrl + "/155");
     console.log(res);
     return res;
   }

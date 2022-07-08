@@ -1,37 +1,23 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import User from "../model/User";
 import UserService from "../service/UserService";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUsers } from "../redux/User/UserActions";
 
-class ShowUser extends Component {
-  constructor() {
-    super();
+const ShowUser = () => {
+  let dispatch = useDispatch();
+  const { users } = useSelector((state) => state.users);
 
-    this.state = {
-      user: new User(),
-      users: [],
-    };
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
-    this.userService = new UserService();
-  }
-
-  componentDidMount() {
-    this.userService
-      .getAllUsers()
-      .then((result) => {
-        alert(JSON.stringify(result));
-        this.setState({ users: result.data });
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }
-
-  render() {
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          {this.state.users.length > 0 ? (
-            <table className="table table-bordered">
+        {users.length > 0 ? (
+          <table className="table table-bordered">
+            <thead>
               <tr>
                 <th>User Id</th>
                 <th>First Name</th>
@@ -41,27 +27,27 @@ class ShowUser extends Component {
                 <th>Phone</th>
                 <th>Created At</th>
               </tr>
-              <tbody>
-                {this.state.users.map((usr) => (
-                  <tr>
-                    <td>{usr.id}</td>
-                    <td>{usr.firstName}</td>
-                    <td>{usr.lastName}</td>
-                    <td>{usr.email}</td>
-                    <td>{usr.gender}</td>
-                    <td>{usr.phone}</td>
-                    <td>{usr.createdAt}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <div>No User Found</div>
-          )}
-        </div>
+            </thead>
+            <tbody>
+              {users.map((usr) => (
+                <tr key={usr.id}>
+                  <td>{usr.id}</td>
+                  <td>{usr.firstName}</td>
+                  <td>{usr.lastName}</td>
+                  <td>{usr.email}</td>
+                  <td>{usr.gender}</td>
+                  <td>{usr.phone}</td>
+                  <td>{usr.createdAt}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div>No User Found</div>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default ShowUser;

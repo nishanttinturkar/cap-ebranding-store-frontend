@@ -1,3 +1,4 @@
+import UserService from "../../service/UserService";
 import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
@@ -13,6 +14,7 @@ export const fetchUsersRequest = () => {
     type: FETCH_USERS_REQUEST,
   };
 };
+
 export const fetchUsersSuccess = (users) => {
   return {
     type: FETCH_USERS_SUCCESS,
@@ -58,6 +60,7 @@ export const fetchUsers = () => {
       .getAllUsers()
       .then((response) => {
         const users = response.data;
+        console.log(users);
         dispatch(fetchUsersSuccess(users)); //take action as parameter,reudcer is triggered
       })
       .catch((error) => {
