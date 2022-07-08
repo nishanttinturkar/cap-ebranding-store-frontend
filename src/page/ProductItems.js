@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "../Components/Header";
+import Header from "../components/Header";
 import Product from "../model/Product";
 import ProductService from "../service/ProductService";
 import ProductComponents from "./ProductComponents";
