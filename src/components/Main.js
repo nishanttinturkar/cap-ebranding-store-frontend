@@ -1,20 +1,20 @@
 import React from "react";
 import axios from "axios";
-import User from "../model/User";
+import Category from "../model/Category";
 class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: new User(),
-      users: [],
+      category: new Category(),
+      categories: [],
     };
   } //jest test unit(test the service layer)
   componentDidMount() {
     axios
-      .get(`http://localhost:8091/store/user/12`) //getmapping
+      .get(`http://localhost:8091/store/category`) //getmapping
       .then((result) => {
         alert(JSON.stringify(result));
-        this.setState({ users: result.data });
+        this.setState({ categories: result.data });
       })
       .catch((error) => {
         alert(error);
@@ -26,7 +26,7 @@ class Main extends React.Component {
     return (
       <div>
         <h2>
-          <span className="badge badge-primary">User Form</span>
+          <span className="badge badge-primary">Category Form</span>
         </h2>
         <form>
           <div className="form-group">
