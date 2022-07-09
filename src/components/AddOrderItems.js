@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import OrderItems from "../Model/OrderItems"
-import OrderService from "../Service/OrderService"
+import OrderItems from "../model/OrderItems"
+import OrderService from "../service/OrderService"
 import { addOrderItems } from "../redux/orderItems/orderItemAction";
 
  

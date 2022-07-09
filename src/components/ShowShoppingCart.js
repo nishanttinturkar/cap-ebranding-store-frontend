@@ -3,20 +3,22 @@ import OrderService from '../service/OrderService';
 import Order from '../model/Order'
 import {Link} from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
-import { fetchOrders } from '../redux/order/orderActions';
+import { fetchShoppingCart } from '../redux/shoppingCart/shoppingCartAction';
 
 
 
 
-    const ShowOrder =() => {
+    const ShowShoppingCart =() => {
    let dispatch = useDispatch();
-   const {orders} = useSelector((state) => state.orders);
+   const {shoppingCarts} = useSelector((state) => state.shoppingCarts);
+
 
    useEffect (()=> {
-    dispatch(fetchOrders())
+    dispatch(fetchShoppingCart())
    }, []);
-        
+
    
+        
 
   
         return (
@@ -25,32 +27,25 @@ import { fetchOrders } from '../redux/order/orderActions';
                 Order List
                 <div>
                     {
-                    orders.length > 0 ? ( 
+                    shoppingCarts.length > 0 ? ( 
                         <table className='table table-bordered'>
                             <thead>
                                 <tr>
-                                    <th>Order Id</th>
-                                    <th>Created At</th>
-                                    <th>Total</th>
-                                    <th>Payment Id</th>
-                                    <th>User Id</th>
-                                    <th>Action</th>
+                                    <th>Shopping Cart Id</th>
+                                    <th>User id</th>
                                 </tr>
                             </thead>
                             <tbody>{
-                                orders.map((odr) => (
+                                shoppingCarts.filter(shopCart  =>  shopCart.userId == 154 ).map((shopCarts) => (
                                     <tr>
-                                        <td> {odr.id}</td>
-                                        <td> {odr.createdAt}</td>
-                                        <td> {odr.total}</td>
-                                        <td> {odr.paymentId}</td>
-                                        <td> {odr.userId}</td>
+                                        <td> {shopCarts.id}</td>
+                                        <td> {shopCarts.userId}</td>
                                         {/* <td> <button className = "btn btn-warning" to = {{pathname:`/order_items/${odr.id}`}}>View</button></td> */}
                                         </tr>
                                          ))
                                         } </tbody>
                                 </table>
-                            ) : <div>No order present</div>
+                            ) : <div>No cart present</div>
                                     }   
                         </div>
                     </div>
@@ -61,4 +56,4 @@ import { fetchOrders } from '../redux/order/orderActions';
 
                                     
                                
-export default ShowOrder
+export default ShowShoppingCart

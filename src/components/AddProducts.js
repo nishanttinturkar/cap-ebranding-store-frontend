@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import Product from "../Model/Product"
-import ProductService from "../Service/ProductService"
+import Product from "../model/Product"
+import ProductService from "../service/ProductService"
 import { useSelector, useDispatch } from "react-redux";
 import { addProducts } from "../redux/product/productAction"
 

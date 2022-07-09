@@ -1,4 +1,4 @@
-import OrderService from '../../Service/OrderService'
+import OrderService from '../../service/OrderService'
 import { FETCH_ORDERS_REQUEST, FETCH_ORDERS_SUCCESS, FETCH_ORDERS_FAILURE, ADD_ORDER_REQUEST  } from './orderTypes'
 
 export const fetchOrdersRequest = () => {

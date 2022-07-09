@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import Order from "../model/Order"
-import OrderService from "../service/OrderService"
 import { useSelector, useDispatch } from "react-redux";
-import { addOrder } from "../redux/order/orderActions";
-// import { addOrder } from '../redux/order/orderActions'
-// import { connect } from 'react-redux'
+import ShoppingCartItems from "../model/ShoppingCartItems"
+import ShoppingCartService from "../service/ShoppingCartService"
+import { addShoppingCartItem } from "../redux/shoppingCartItem/shoppingCartItemActions";
+
  
-function AddOrder(props) {
+function AddShoppingCartItem(props) {
   let dispatch = useDispatch();
   const navigate = useNavigate();
-  let service = new OrderService();
-  const [state, setState] = useState({ order: new Order() });
+  let service = new ShoppingCartService();
+  const [state, setState] = useState({ shoppingCartItems: new ShoppingCartItems() });
   return (
     <div className="container">
       <form>
         <div>
-          <h2>Create Order</h2>
+          <h2>Create Cart Items</h2>
           <div className="row">
             {/* <div className="col">
               <label>Order Id</label>
@@ -39,64 +38,77 @@ function AddOrder(props) {
           <input
             className="form-control"
             type="text"
-            value={state.order.careatedAt}
+            value={state.shoppingCartItems.createdAt}
             onChange={(e) => {
               setState({
-                order: {
-                  ...state.order,
-                  careatedAt: e.target.value,
+                shoppingCartItems: {
+                  ...state.shoppingCartItems,
+                  createdAt: e.target.value,
                 },
               });
             }}
           />
-            
-            </div>
+
+            <label>Modified at</label>
+                <input
+                    className="form-control"
+                    type="text"
+                    value={state.shoppingCartItems.modifiedAt}
+                    onChange={(e) => {
+                  setState({
+                    shoppingCartItems: {
+                      ...state.shoppingCartItems,
+                      modifiedAt: e.target.value,
+                    },
+                });
+            }}
+          />
+        </div>
           </div>
           <br />
-          <label>Payment Id</label>
+          <label>Product Id</label>
           <input
             className="form-control"
             type="number"
             placeholder="1234"
-            value={state.order.paymentId}
+            value={state.shoppingCartItems.productId}
             onChange={(e) => {
               setState({
-                order: {
-                  ...state.order,
-                  paymentId: e.target.value,
+                shoppingCartItems: {
+                  ...state.shoppingCartItems,
+                  productId: e.target.value,
                 },
               });
             }}
           />
-          <br />
-          <label>Total</label>
+         <br />
+          <label>Cart Id</label>
           <input
             className="form-control"
             type="number"
             placeholder="1234"
-            value={state.order.total}
+            value={state.shoppingCartItems.cartId}
             onChange={(e) => {
               setState({
-                order: {
-                  ...state.order,
-                  total: e.target.value,
+                shoppingCartItems: {
+                  ...state.shoppingCartItems,
+                  cartId: e.target.value,
                 },
               });
             }}
           />
-          <br />
           <div className="col">
-              <label>User Id</label>
+              <label>Quantity</label>
               <input
                 className="form-control"
                 type="number"
                 placeholder="1234"
-                value={state.order.userId}
+                value={state.shoppingCartItems.quantity}
                 onChange={(e) => {
                   setState({
-                    order: {
-                      ...state.order,
-                      userId: e.target.value,
+                    shoppingCartItems: {
+                      ...state.shoppingCartItems,
+                      quantity: e.target.value,
                     },
                   });
                 }}
@@ -106,31 +118,31 @@ function AddOrder(props) {
             className="btn btn-outline-primary mt-3"
             onClick={(e) => {
               e.preventDefault();
-              dispatch(addOrder(state.order))
+              dispatch(addShoppingCartItem(state.shoppingCartItems))
               // service
-              //   .addOrder(state.order)
+              //   .addOrderItems(state.orderItems)
               //   .then((result) => {
-              //     alert("Order added into db.");
-              //     navigate("/Orders");
+              //     alert("Order item added into db.");
+              //     navigate("/ordersItems");
               //   })
               //   .catch((error2) => {
               //     alert(error2);
               //   });
             }}
           >
-            Add Order
+            Add Cart Item
           </button>
         </div>
       </form>
     </div>
   );
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addOrder: (order) => { dispatch(addOrder(order))}
-//   }
+ 
+//  const mapDispatchToProps = (dispatch) => {
+//    return {
+//      addOrder: (order) => { dispatch(addOrder(order))}
+//    }
 // }
 
-// export default connect (null, mapDispatchToProps)(AddOrder);
-export default AddOrder
+//  export default connect (null, mapDispatchToProps)(AddOrderItems);
+ export default AddShoppingCartItem

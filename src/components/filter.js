@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import OrderService from '../Service/OrderService'
-import ProductService from '../Service/ProductService'
+import OrderService from '../service/OrderService'
+import ProductService from '../service/ProductService'
 import Orders from '../Pages/Orders'
-import OrderItems from '../Model/OrderItems'
-import Order from '../Model/Order'
-import Product from '../Model/Product'
+import OrderItems from '../model/OrderItems'
+import Order from '../model/Order'
+import Product from '../model/Product'
 
 
 

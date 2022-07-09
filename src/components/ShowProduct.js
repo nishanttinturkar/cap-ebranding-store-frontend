@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
-import OrderService from '../Service/OrderService';
-import Order from '../Model/Order'
-import {Link} from 'react-router-dom'
+import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from '../redux/product/productAction';
+import { fetchProducts, getProductById } from '../redux/product/productAction';
 
 
 
     const ShowProduct =() => {
-   let dispatch = useDispatch();
+        const navigate = useNavigate();
+        let dispatch = useDispatch();
    const {products} = useSelector((state) => state.products);
 
    useEffect (()=> {
@@ -52,16 +51,32 @@ import { fetchProducts } from '../redux/product/productAction';
                                         <td> {pdr.imgUrl}</td>
                                         <td> {pdr.createdAt}</td>
                                         <td> {pdr.modifiedAt}</td>
-                                        {/* <td> <button className = "btn btn-warning" to = {{pathname:`/order_items/${pdr.id}`}}>View</button></td> */}
+                                        <td>   
+                                            <button className='btn btn-warning' onClick={(e) => {e.preventDefault(); navigate("/product/view/"+pdr.id)}}>
+                                                View product
+                                            </button>
+                                        </td>
                                         </tr>
                                          ))
                                         } </tbody>
                                 </table>
+
+                                // <button className = "btn btn-warning" 
+                                // onClick={(e) => {
+                                //     e.preventDefault()
+                                //     alert("inside get product by id")
+                                //     dispatch(getProductById(164) )
+                                //     alert(JSON.stringify(products))
+
+                                // }}
+                                // >View product</button>
+                                
                             ) : <div>No product present</div>
                                     }   
                         </div>
                     </div>
                     </div>
+                
                    
                 );
             }

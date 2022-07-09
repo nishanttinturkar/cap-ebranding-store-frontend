@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, ADD_PRODUCTS_REQUEST  } from './productTypes'
+import { FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, ADD_PRODUCTS_REQUEST, GET_PRODUCT_BY_ID_REQUEST, FETCH_PRODUCT_SUCCESS  } from './productTypes'
 
 const initialState = {
     loading: false,
@@ -26,12 +26,26 @@ const productReducer = (state = initialState, action) => {
                 products: action.payload,
                 loading: false
             }
+        
+            case FETCH_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                product: action.payload,
+                loading: false
+            }
+
         case FETCH_PRODUCTS_FAILURE:
             return {
                 ...state,
                 error: action.payload,
                 loading: false
             }
+        case GET_PRODUCT_BY_ID_REQUEST:
+            return{
+                ...state,
+                product: action.payload
+            }
+
         default: return state
     }
 }

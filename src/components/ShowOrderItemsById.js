@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import OrderItems from "../Model/OrderItems";
-import OrderService from "../Service/OrderService";
+import OrderItems from "../model/OrderItems";
+import OrderService from "../service/OrderService";
 
 
 class ShowOrderItemsById extends Component {

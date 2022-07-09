@@ -1,5 +1,5 @@
-import ProductService from '../../Service/ProductService'
-import { FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, ADD_PRODUCTS_REQUEST  } from './productTypes'
+import ProductService from '../../service/ProductService'
+import { FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, ADD_PRODUCTS_REQUEST, GET_PRODUCT_BY_ID_REQUEST, FETCH_PRODUCT_SUCCESS  } from './productTypes'
 
 export const fetchProductsRequest = () => {
     return {
@@ -11,6 +11,13 @@ export const fetchProductsSuccess = products => {
     return{
         type: FETCH_PRODUCTS_SUCCESS,
         payload: products
+    }
+}
+
+export const fetchProductSuccess = product => {
+    return{
+        type: FETCH_PRODUCT_SUCCESS,
+        payload: product
     }
 }
 
@@ -28,6 +35,13 @@ export const addProductsRequest = products => {
     }
 }
 
+export const getProductByIdRequest = (prod) => {
+    return {
+        type: GET_PRODUCT_BY_ID_REQUEST,
+        payload: prod,
+    }
+}
+
 export const fetchProducts = () => {
     return (dispatch) => {
         let service =  new ProductService()
@@ -41,6 +55,7 @@ export const fetchProducts = () => {
     })
     }
 }
+
 export const addProducts = products => {
     return (dispatch) => {
         let service = new ProductService()
@@ -53,3 +68,21 @@ export const addProducts = products => {
         })
     }
 }
+
+export const getProductById = (prodId) => {
+    
+    return (dispatch) => {
+        let service = new ProductService();
+        service.getProductsById(prodId)
+                .then ((response) => {
+                    const products = response.data
+                    console.log(products)
+                    dispatch(fetchProductSuccess(products))
+                })
+                
+            .catch((error) => {
+                dispatch(fetchProductsFailure(error.message));
+            });
+    };
+
+};

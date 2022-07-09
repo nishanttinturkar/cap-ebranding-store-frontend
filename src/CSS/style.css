@@ -8,6 +8,15 @@ body {
     color: #707070
 }
 
+.nav-link:hover {
+    cursor: pointer;
+}
+
+#nav-logo {
+    color: #3300FF;
+    font-weight: 600;
+}
+
 .active {
     border-bottom: 3px solid #3300FF;
     color: #3300FF;
@@ -29,8 +38,6 @@ body {
     font-size: 5em;
     font-weight: 700;
     padding-top: 60px;
-
-
 }
 
 .banner-button {
@@ -48,5 +55,176 @@ body {
 
 .banner-svg {
    width: 100%;
-   height: 100%;
+   height: 100vh;
+}
+
+.auth-container{
+    width: 80%;
+    height: auto;
+    margin: auto;
+    border: 3px solid #3300FF;
+    border-radius: 25px;
+    margin-top: 40px;
+    color: #707070;
+    align-content: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.auth-button-container{
+    padding-top: 30px;
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+.auth-form-container{
+    padding: 5% 10% 5% 10%;
+}
+
+.login-tab{
+    width: 50%;
+    background-color: #fff;
+    border: solid #000;
+    border-radius: 20px 0 0 20px;
+}
+
+.register-tab{
+    width: 50%;
+    background-color: #fff;
+    border-radius: 0 20px 20px 0;
+    
+}
+
+.active-btn {
+    color: #3300FF;
+    border: 3px solid #3300FF;
+}
+
+.primary-btn{
+    border: 3px solid #3300FF;
+    border-radius: 40px;
+    background: #fff;
+    width: 40%;
+    font-weight: 600;
+    align-content: center;
+    color: #707070;
+    margin-left: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
+}
+
+.auth-heading{
+    padding-top: 40px;
+    text-align: center;
+}
+
+.auth-heading h2 {
+    font-weight: 600;
+}
+
+.auth-heading h2 span {
+    color: #3300FF;
+}
+
+.action-card{
+    border-radius: 14px;
+    padding: 10px;
+    width: 100%;
+    margin: 20px;
+    border: 1px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
+}
+
+.action-card:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 13px;
+    border: 1px solid #3300FF;
+}
+
+.action-card h4, p{
+    padding: 10px;
+}
+
+.page-heading{
+    margin-top: 60px;
+}
+
+.cart-nav{
+    font-weight: 600;
+    text-align: center;
+    padding: 20px;
+    color: #707070;
+}
+
+.cart-nav:hover {
+    cursor: pointer;
+}
+
+.link-design{
+    padding: 10px;
+    margin-left: auto;
+    color: #3300FF;
+}
+
+.link-design:hover{
+    cursor: pointer;
+}
+
+.action-card-1{
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
+    border: 1px solid #3300FF;
+    
+}
+
+.find-field {
+    margin-right: 20px;
+}
+
+.action-card-1 p{
+    padding: 0;
+}
+
+.action-button-container button{
+    align-items: center;
+    width: 100%;
+    margin: 10% auto;
+    border: 2px solid #3300FF;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
+}
+
+.action-button-container button:hover{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+}
+
+.product-image{
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    
+    
+}
+.product-image:hover{
+    width: 100%;
+    cursor: pointer;
+}
+
+.image-container{
+    border: 1px solid #707070;
+    border-radius: 5px;
+
+}
+
+.action-button{
+    align-items: center;
+    width: 30%;
+    margin: 0 auto;
+    border: 2px solid #3300FF;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
 }

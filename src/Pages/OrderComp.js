@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
-import ProductService from '../Service/ProductService'
-import OrderService from '../Service/OrderService'
+import ProductService from '../service/ProductService'
+import OrderService from '../service/OrderService'
 
 const OrderComp = () =>  {
 
