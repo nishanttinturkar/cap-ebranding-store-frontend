@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import lottie from "lottie-web";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
   const container = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     lottie.loadAnimation({
@@ -25,6 +28,9 @@ const Admin = () => {
               <p>
                 Create new category, remove category, edit existing category...
               </p>
+              <Link className="link-design" to={`/admin/manage-users`}>
+                Manage
+              </Link>
             </div>
             <div className="action-card">
               <div>
@@ -32,12 +38,18 @@ const Admin = () => {
               </div>
 
               <p>Assign roles to users, See users details...</p>
+              <Link className="link-design" to={`/admin/manage-users`}>
+                Manage
+              </Link>
             </div>
             <div className=" action-card">
               <h4>Manage Products</h4>
               <p>
                 Create new product, remove product, edit existing product...
               </p>
+              <Link className="link-design" to={`/admin/manage-users`}>
+                Manage
+              </Link>
             </div>
           </div>
           <div className="col">

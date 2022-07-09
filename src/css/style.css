@@ -128,6 +128,7 @@ body {
 .action-card{
     border-radius: 14px;
     padding: 10px;
+    width: 100%;
     margin: 20px;
     border: 1px solid #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
@@ -155,4 +156,47 @@ body {
 
 .cart-nav:hover {
     cursor: pointer;
+}
+
+.link-design{
+    padding: 10px;
+    margin-left: auto;
+    color: #3300FF;
+}
+
+.link-design:hover{
+    cursor: pointer;
+}
+
+.action-card-1{
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
+    border: 1px solid #3300FF;
+    
+}
+
+.find-field {
+    margin-right: 20px;
+}
+
+.action-card-1 p{
+    padding: 0;
+}
+
+.action-button-container button{
+    align-items: center;
+    width: 100%;
+    margin: 10% auto;
+    border: 2px solid #3300FF;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
+}
+
+.action-button-container button:hover{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
 }

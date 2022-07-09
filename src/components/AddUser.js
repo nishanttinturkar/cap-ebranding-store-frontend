@@ -3,10 +3,13 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import User from "../model/User";
 import UserService from "../service/UserService";
+import { useSelector, useDispatch } from "react-redux";
+import { addUser } from "../redux/User/UserActions";
 
 function AddUser() {
   //const navigate = useNavigate();
   let service = new UserService();
+  let dispatch = useDispatch();
   const [state, setState] = useState({ user: new User() });
   return (
     <div className="container">
@@ -182,15 +185,7 @@ function AddUser() {
             className="btn primary-btn mt-3"
             onClick={(e) => {
               e.preventDefault();
-              service
-                .addUser(state.user)
-                .then((result) => {
-                  alert("User added into db.");
-                  //  navigate("/users");
-                })
-                .catch((error2) => {
-                  alert(error2);
-                });
+              dispatch(addUser(state.user));
             }}
           >
             Register

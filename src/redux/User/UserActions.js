@@ -109,15 +109,18 @@ export const updateUser = (emp) => {
 
 //Adding User
 export const addUser = (emp) => {
+  console.log("Request Body: " + JSON.stringify(emp));
   return (dispatch) => {
     let service = new UserService();
     service
       .addUser(emp)
       .then((response) => {
+        alert("User Added");
         const user = response.data;
         dispatch(addUserRequest(user)); //take action as parameter,reudcer is triggered
       })
       .catch((error) => {
+        alert(error);
         // dispatch(fetchUsersFailure(error.message));
       });
   };
