@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import productDetails from "./productDetails";
 
 class ProductComponents extends Component {
   render() {
@@ -21,7 +22,11 @@ class ProductComponents extends Component {
                 {"\u20B9"}
                 {price}
               </b>
-              <a href="#" target="_blank" className="btn btn-primary">
+              <a
+                href="./productDetails.js"
+                target="_blank"
+                className="btn btn-primary"
+              >
                 Product Details
               </a>
             </div>

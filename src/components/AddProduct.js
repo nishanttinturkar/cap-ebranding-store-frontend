@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import Product from "../model/Product";
-import ProductService from "../Service/ProductService";
+import ProductService from "../service/ProductService";
 import Header from "./Header";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/product/productAction";
 
 function AddProduct() {
   const navigate = useNavigate();
-  prod;
   let service = new ProductService();
   const [state, setState] = useState({ product: new Product() });
   const [prodNameErr, setProductnameErr] = useState("");
@@ -159,8 +160,6 @@ function AddProduct() {
                   <input
                     className="form-control "
                     type="number"
-                    //maxLength={10}
-                    //placeholder="9876543210"
                     value={state.product.userId}
                     onChange={(e) => {
                       setState({

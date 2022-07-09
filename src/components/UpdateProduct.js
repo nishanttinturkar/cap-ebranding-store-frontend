@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate, useParams } from "react-router";
 import Product from "../model/Product";
 import ProductService from "../service/ProductService";
+import { Link } from "react-router-dom";
 
-Product;
 function UpdateProduct() {
   const navigate = useNavigate();
   let service = new ProductService();
@@ -80,6 +80,27 @@ function UpdateProduct() {
             }}
           />
           <br />
+
+          {/* <div className="col">
+              <label>Price</label>
+              <input
+                className="form-control"
+                type="text"
+                id="description"
+                //placeholder="Deo"
+                value={state.product.price}
+                onChange={(e) => {
+                  setState({
+                    product: {
+                      ...state.product,
+                      price: e.target.value,
+                    },
+                  });
+                }}
+              />
+            </div>
+          </div>
+          <br /> */}
 
           <button
             className="btn btn-outline-primary mt-3"

@@ -1,34 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import ProductService from "../Service/ProductService";
 import product from "../model/Product";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchProducts } from "../redux/product/productAction";
 
-class ShowProduct extends Component {
-  constructor() {
-    super();
+const ShowProduct = () => {
+  let dispatch = useDispatch();
+  const { products } = useSelector((state) => state.product);
 
-    this.state = {
-      product: new product(),
-      products: [],
-    };
-    this.productService = new ProductService();
-  }
-  componentDidMount() {
-    this.productService
-      .getAllProduct()
-      .then((result) => {
-        alert(JSON.stringify(result));
-        this.setState({ product: result.data });
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }
-  render() {
-    return (
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  return (
+    <div>
       <div>
-        <div>
-          {this.state.products.length > 0 ? (
-            <table className="">
+        {products.length > 0 ? (
+          <table className="table table-borderd">
+            <thead>
               <tr>
                 <th>Image Url</th>
                 <th>Product Name</th>
@@ -38,27 +28,27 @@ class ShowProduct extends Component {
                 <th>created At</th>
                 <th>category Id</th>
               </tr>
-              <tbody>
-                {this.getSnapshotBeforeUpdate.products.map((prod) => (
-                  <tr>
-                    <td>prod.imgUrl</td>
-                    <td>prod.name</td>
-                    <td>prod.description</td>
-                    <td>prod.Price</td>
-                    <td>prod.vendorId</td>
-                    <td>prod.createdAt</td>
-                    <td>prod.categoryId</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <div>No Product Found</div>
-          )}
-        </div>
+            </thead>
+            <tbody>
+              {products.map((prod) => (
+                <tr key={prod}>
+                  <td>prod.imgUrl</td>
+                  <td>prod.name</td>
+                  <td>prod.description</td>
+                  <td>prod.Price</td>
+                  <td>prod.vendorId</td>
+                  <td>prod.createdAt</td>
+                  <td>prod.categoryId</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div>No Product Found</div>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default ShowProduct;
