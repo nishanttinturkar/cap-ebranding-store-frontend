@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
@@ -12,6 +13,7 @@ import {
   IS_VENOR,
   IS_USER,
   IS_NOT_ADMIN,
+  GET_USER_BY_ID,
 } from "./UserTypes";
 
 const initialState = {
@@ -38,6 +40,12 @@ const reducer = (state = initialState, action) => {
         users: [...state.users, action.payload],
         loading: true,
       };
+    case DELETE_USER_REQUEST:
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
+      };
     case FETCH_USERS_SUCCESS:
       return {
         ...state,
@@ -54,6 +62,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         login: true,
+      };
+
+    case UPDATE_USER_REQUEST:
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
       };
     case IS_ADMIN:
       return {
@@ -77,6 +92,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         login: false,
+      };
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
       };
     default:
       return state;

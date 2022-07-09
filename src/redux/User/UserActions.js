@@ -13,6 +13,7 @@ import {
   IS_ADMIN,
   IS_VENOR,
   IS_USER,
+  GET_USER_BY_ID,
 } from "./UserTypes";
 
 export const fetchUsersRequest = () => {
@@ -88,6 +89,13 @@ export const isInvalidLogin = () => {
   };
 };
 
+export const getUser = (user) => {
+  return {
+    type: GET_USER_BY_ID,
+    payload: user,
+  };
+};
+
 //get Users
 export const fetchUsers = () => {
   return (dispatch) => {
@@ -121,6 +129,21 @@ export const deleteUser = (empId) => {
           .catch((error) => {
             dispatch(fetchUsersFailure(error.message));
           });
+      })
+      .catch((error) => {
+        dispatch(fetchUsersFailure(error.message));
+      });
+  };
+};
+
+export const getUserById = (empId) => {
+  return (dispatch) => {
+    let service = new UserService();
+    service
+      .getUserById(empId)
+      .then((response) => {
+        console.log("Response : " + response);
+        dispatch(getUser(response.data));
       })
       .catch((error) => {
         dispatch(fetchUsersFailure(error.message));

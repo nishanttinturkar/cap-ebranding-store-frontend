@@ -11,3 +11,4 @@ export const IS_ADMIN = "IS_ADMIN";
 export const IS_NOT_ADMIN = "IS_NOT_ADMIN";
 export const IS_VENOR = "IS_VENOR";
 export const IS_USER = "IS_USER";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";

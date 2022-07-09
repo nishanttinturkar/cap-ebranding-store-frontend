@@ -13,6 +13,18 @@ class UserService {
     return axios.post(this.baseUrl, user);
   }
 
+  deleteUserById(userId) {
+    return axios.delete(this.baseUrl + "/" + userId);
+  }
+
+  updateUser(user) {
+    return axios.put(this.baseUrl, user);
+  }
+
+  getUserById(userId) {
+    return axios.get(this.baseUrl + "/" + userId);
+  }
+
   validateUser(loginCred) {
     console.log("inside service" + JSON.stringify(loginCred));
     var res = axios.post(this.baseUrl + "/login", loginCred);

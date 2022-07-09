@@ -6,7 +6,6 @@ class User {
   phone = "";
   email = "";
   password = "";
-  role = "";
   modifiedAt = "";
   createdAt = "";
 }

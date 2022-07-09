@@ -1,13 +1,21 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUsers } from "../redux/User/UserActions";
+import { fetchUsers, deleteUser } from "../redux/User/UserActions";
+import { useNavigate } from "react-router";
 
 const ManageUsers = () => {
   let dispatch = useDispatch();
+  const navigate = useNavigate();
   const { users } = useSelector((state) => state.users);
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete the user?")) {
+      dispatch(deleteUser(id));
+    }
+  };
 
   return (
     <div className="container">
@@ -51,6 +59,15 @@ const ManageUsers = () => {
                       <button>Make Admin</button>
                       <br />
                       <button>Make Vendor</button>
+                      <br />
+                      <button onClick={() => handleDelete(usr.id)}>
+                        Delete User
+                      </button>
+                      <button
+                        onClick={() => navigate(`/admin/update-user/${usr.id}`)}
+                      >
+                        Update User
+                      </button>
                     </div>
                   </div>
                 </div>

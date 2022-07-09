@@ -7,6 +7,7 @@ import Home from "./Home";
 import Order from "./Order";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import ManageUsers from "../components/ManageUsers";
+import UpdateUser from "../components/UpdateUser";
 
 function Pages() {
   return (
@@ -24,6 +25,11 @@ function Pages() {
             exact
             path="/admin/manage-users"
             element={<ManageUsers />}
+          ></Route>
+          <Route
+            exact
+            path="/admin/update-user/:id"
+            element={<UpdateUser />}
           ></Route>
         </Routes>
       </Router>
