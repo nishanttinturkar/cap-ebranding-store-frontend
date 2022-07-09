@@ -1,6 +1,7 @@
 class LoginModel {
-  emailId = "";
-  password = "";
+  id = "";
+  role = "";
+  userId = "";
 }
 
 export default LoginModel;

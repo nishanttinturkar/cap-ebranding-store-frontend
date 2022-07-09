@@ -1,4 +1,5 @@
 import UserService from "../../service/UserService";
+
 import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
@@ -7,6 +8,11 @@ import {
   UPDATE_USER_REQUEST,
   ADD_USER_REQUEST,
   SEARCH_USERS_REQUEST,
+  VALIDATE_USER_REQUEST,
+  IS_INVALID_LOGIN,
+  IS_ADMIN,
+  IS_VENOR,
+  IS_USER,
 } from "./UserTypes";
 
 export const fetchUsersRequest = () => {
@@ -49,6 +55,36 @@ export const searchUser = (empId) => {
   return {
     type: SEARCH_USERS_REQUEST,
     payload: empId,
+  };
+};
+
+export const validateUserRequest = () => {
+  return {
+    type: VALIDATE_USER_REQUEST,
+  };
+};
+
+export const isAdmin = () => {
+  return {
+    type: IS_ADMIN,
+  };
+};
+
+export const isVendor = () => {
+  return {
+    type: IS_VENOR,
+  };
+};
+
+export const isUser = () => {
+  return {
+    type: IS_USER,
+  };
+};
+
+export const isInvalidLogin = () => {
+  return {
+    type: IS_INVALID_LOGIN,
   };
 };
 
@@ -117,10 +153,47 @@ export const addUser = (emp) => {
       .then((response) => {
         alert("User Added");
         const user = response.data;
+        console.log(user.success);
         dispatch(addUserRequest(user)); //take action as parameter,reudcer is triggered
       })
       .catch((error) => {
         alert(error);
+        // dispatch(fetchUsersFailure(error.message));
+      });
+  };
+};
+
+export const validateUser = (emp) => {
+  console.log("Request Body: " + JSON.stringify(emp));
+
+  return (dispatch) => {
+    let service = new UserService();
+    service
+      .validateUser(emp)
+      .then((result) => {
+        dispatch(validateUserRequest());
+        localStorage.setItem("userID", JSON.stringify(result.data.id));
+        localStorage.setItem("role", JSON.stringify(result.data.role));
+        switch (result.data.role) {
+          case "admin":
+            dispatch(isAdmin());
+            break;
+          case "vendor":
+            dispatch(isVendor());
+            break;
+          case "user":
+            dispatch(isUser());
+            break;
+        }
+        var stored = localStorage.getItem("userID");
+        console.log(stored);
+        // dispatch(selectHome());
+        // console.log(navSelector.login);
+        // navigate("/home");
+      })
+      .catch((error) => {
+        alert(error);
+        dispatch(isInvalidLogin());
         // dispatch(fetchUsersFailure(error.message));
       });
   };

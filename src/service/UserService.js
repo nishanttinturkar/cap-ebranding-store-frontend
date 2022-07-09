@@ -3,7 +3,7 @@ class UserService {
   baseUrl = `http://localhost:8091/store/user`;
 
   getAllUsers() {
-    var res = axios.get(this.baseUrl + "/155");
+    var res = axios.get(this.baseUrl);
     console.log(res);
     return res;
   }

@@ -3,7 +3,7 @@ class RoleService {
   baseUrl = `http://localhost:8091/store/role`;
 
   getAllRoles() {
-    var res = axios.get(this.baseUrl + "/155");
+    var res = axios.get(this.baseUrl);
     console.log(res);
     return res;
   }

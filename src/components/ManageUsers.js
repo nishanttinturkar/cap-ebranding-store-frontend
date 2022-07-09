@@ -33,23 +33,25 @@ const ManageUsers = () => {
             </div>
           </div> */}
 
-          <div className="action-card-1">
+          <div>
             <p>Users List</p>
             <div className="row">
               {users.map((usr) => (
-                <div className="action-card-1 row">
-                  <div className="col">
-                    <p>
-                      {usr.firstName} {usr.lastName}
-                    </p>
-                    <p>Gender: {usr.gender}</p>
-                    <p>Email: {usr.email}</p>
-                    <p>Mobile: {usr.phone}</p>
-                  </div>
-                  <div className="col-4 action-button-container">
-                    <button>Make Admin</button>
-                    <br />
-                    <button>Make Vendor</button>
+                <div className="card col-6">
+                  <div className="card-body row">
+                    <div className="col">
+                      <p>
+                        {usr.firstName} {usr.lastName}
+                      </p>
+                      <p>Gender: {usr.gender}</p>
+                      <p>Email: {usr.email}</p>
+                      <p>Mobile: {usr.phone}</p>
+                    </div>
+                    <div className="col-4 action-button-container">
+                      <button>Make Admin</button>
+                      <br />
+                      <button>Make Vendor</button>
+                    </div>
                   </div>
                 </div>
               ))}

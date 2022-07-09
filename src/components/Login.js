@@ -2,15 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import LoginModel from "../model/LoginModel";
 import UserService from "../service/UserService";
+import RoleService from "../service/RoleService";
 import { useSelector, useDispatch } from "react-redux";
 import { isLoggedIn, selectHome } from "../redux/common/CommonActions";
-
+import { validateUser } from "../redux/User/UserActions";
 function Login() {
   let dispatch = useDispatch();
+  const userRedux = useSelector((state) => state.users);
   const navigate = useNavigate();
   const navSelector = useSelector((state) => state.navSelector);
   let service = new UserService();
+  let rService = new RoleService();
   const [state, setState] = useState({ loginCred: new LoginModel() });
+  console.log("Form Login" + userRedux.login);
   return (
     <form>
       <div>
@@ -53,21 +57,11 @@ function Login() {
           className="btn primary-btn"
           onClick={(e) => {
             e.preventDefault();
-            service
-              .validateUser(state.loginCred)
-              .then((result) => {
-                alert("User Logged in successfully!!");
-                localStorage.setItem("userID", JSON.stringify(result.data.id));
-                localStorage.setItem("login", true);
-                var stored = localStorage.getItem("userID");
-                console.log(stored);
-                dispatch(selectHome());
-                console.log(navSelector.login);
-                navigate("/home");
-              })
-              .catch((error2) => {
-                alert(error2);
-              });
+            dispatch(validateUser(state.loginCred));
+            if (userRedux.login == true) {
+              navigate("/home");
+              dispatch(selectHome());
+            }
           }}
         >
           Login
