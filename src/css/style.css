@@ -240,3 +240,13 @@ body {
 .profile-container p {
     font-weight: 600;
 }
+
+.address-card-container{
+    width: 60%;
+    margin: 20px auto;
+
+}
+
+.space{
+    height: 20px;
+}

@@ -25,7 +25,7 @@ const Header = () => {
     navigate(here);
     if (here === "/") {
       localStorage.clear();
-      dispatch(isInvalidLogin());
+      dispatch(isInvalidLogin({ message: "" }));
     }
   };
 

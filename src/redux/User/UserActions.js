@@ -83,9 +83,10 @@ export const isUser = () => {
   };
 };
 
-export const isInvalidLogin = () => {
+export const isInvalidLogin = (err) => {
   return {
     type: IS_INVALID_LOGIN,
+    payload: err,
   };
 };
 
@@ -127,11 +128,11 @@ export const deleteUser = (empId) => {
             dispatch(fetchUsersSuccess(users)); //take action as parameter,reudcer is triggered
           })
           .catch((error) => {
-            dispatch(fetchUsersFailure(error.message));
+            dispatch(fetchUsersFailure(error.response.data));
           });
       })
       .catch((error) => {
-        dispatch(fetchUsersFailure(error.message));
+        dispatch(fetchUsersFailure(error.response.data));
       });
   };
 };
@@ -146,7 +147,7 @@ export const getUserById = (empId) => {
         dispatch(getUser(response.data));
       })
       .catch((error) => {
-        dispatch(fetchUsersFailure(error.message));
+        dispatch(fetchUsersFailure(error.response.data));
       });
   };
 };
@@ -161,7 +162,7 @@ export const updateUser = (emp) => {
         dispatch(updateUserRequest(emp)); //take action as parameter,reudcer is triggered
       })
       .catch((error) => {
-        // dispatch(fetchUsersFailure(error.message));
+        dispatch(fetchUsersFailure(error.response.data));
       });
   };
 };
@@ -181,7 +182,7 @@ export const addUser = (emp) => {
       })
       .catch((error) => {
         alert(error);
-        // dispatch(fetchUsersFailure(error.message));
+        dispatch(fetchUsersFailure(error.response.data));
       });
   };
 };
@@ -215,8 +216,8 @@ export const validateUser = (emp) => {
         // navigate("/home");
       })
       .catch((error) => {
-        alert(error);
-        dispatch(isInvalidLogin());
+        dispatch(isInvalidLogin(error.response.data));
+        console.log(error.response.data);
         // dispatch(fetchUsersFailure(error.message));
       });
   };

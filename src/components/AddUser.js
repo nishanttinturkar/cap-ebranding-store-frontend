@@ -16,7 +16,6 @@ function AddUser() {
   const [userEmailErr, setUserEmailErr] = useState("");
   const [userPhoneErr, setUserPhoneErr] = useState("");
   const [userGenderErr, setUserGenderErr] = useState("");
-  const [userPass1Err, setUserPass1Err] = useState("");
   const [userPass2Err, setUserPass2Err] = useState("");
 
   const formValidation = () => {
@@ -29,7 +28,6 @@ function AddUser() {
     const userEmailErr = {};
     const userPhoneErr = {};
     const userGenderErr = {};
-    const userPass1Err = {};
     const userPass2Err = {};
 
     if (state.user.firstName.trim().length <= 2) {
@@ -59,7 +57,7 @@ function AddUser() {
       isValid = false;
     }
     if (state.user.password.trim().length <= 0) {
-      userPass2Err.userPasswordRequired = "Create Password";
+      userPass2Err.userPasswordRequired = "Enter Password";
       isValid = false;
     }
 

@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Admin from "./Admin";
 import Authentication from "./Authentication";
-import Cart from "./Cart";
+import Cart from "../pages/Cart";
 import Home from "./Home";
 import Order from "./Order";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";

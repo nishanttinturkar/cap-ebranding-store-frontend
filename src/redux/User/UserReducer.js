@@ -20,7 +20,7 @@ const initialState = {
   loading: false,
   users: [],
   user: {},
-  error: "",
+  error: { message: "" },
   login: false,
   admin: false,
   vendor: false,
@@ -92,6 +92,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         login: false,
+        error: action.payload,
       };
     case GET_USER_BY_ID:
       return {
