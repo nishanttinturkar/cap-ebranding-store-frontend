@@ -56,10 +56,19 @@ const ManageUsers = () => {
                       <p>Mobile: {usr.phone}</p>
                     </div>
                     <div className="col-4 action-button-container">
-                      <button>Make Admin</button>
+                      {/* {usr.role == "admin" ? (
+                        <p>Role: Admin</p>
+                      ) : (
+                        <button>Make Admin</button>
+                      )}
                       <br />
-                      <button>Make Vendor</button>
-                      <br />
+                      {usr.role == "vendor" ? (
+                        <p>Role: Vendor</p>
+                      ) : (
+                        <button>Make Vendor</button>
+                      )}
+                      <br /> */}
+
                       <button onClick={() => handleDelete(usr.id)}>
                         Delete User
                       </button>

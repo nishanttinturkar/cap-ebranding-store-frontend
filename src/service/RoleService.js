@@ -12,12 +12,5 @@ class RoleService {
     console.log("inside service" + JSON.stringify(role));
     return axios.post(this.baseUrl, role);
   }
-
-  validateRole(loginCred) {
-    console.log("inside service" + JSON.stringify(loginCred));
-    var res = axios.post(this.baseUrl + "/login", loginCred);
-    console.log(res);
-    return res;
-  }
 }
 export default RoleService;

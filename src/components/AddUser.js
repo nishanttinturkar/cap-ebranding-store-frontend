@@ -11,6 +11,68 @@ function AddUser() {
   let service = new UserService();
   let dispatch = useDispatch();
   const [state, setState] = useState({ user: new User() });
+  const [userFnameErr, setUserFnameErr] = useState("");
+  const [userLnameErr, setUserLnameErr] = useState("");
+  const [userEmailErr, setUserEmailErr] = useState("");
+  const [userPhoneErr, setUserPhoneErr] = useState("");
+  const [userGenderErr, setUserGenderErr] = useState("");
+  const [userPass1Err, setUserPass1Err] = useState("");
+  const [userPass2Err, setUserPass2Err] = useState("");
+
+  const formValidation = () => {
+    let isValid = true;
+    const userFnameErr = {};
+    const userLnameErr = {};
+    const userEmailErr = {};
+    const userPhoneErr = {};
+    const userGenderErr = {};
+    const userPass1Err = {};
+    const userPass2Err = {};
+
+    if (state.user.firstName.trim().length <= 2) {
+      userFnameErr.userFnameRequired = "User First Name cannot be too short.";
+      isValid = false;
+    }
+    if (state.user.lastName.trim().length <= 2) {
+      userLnameErr.userLnameRequired = "User Last Name cannot be too short.";
+      isValid = false;
+    }
+    if (state.user.email.trim().length <= 0) {
+      userEmailErr.userEmailRequired = "User Email cannot be empty.";
+      isValid = false;
+    }
+    if (state.user.phone.trim().length <= 0) {
+      userPhoneErr.userPhoneRequired = "User Phone No. cannot be empty.";
+      isValid = false;
+    }
+    if (state.user.gender.trim().length <= 0) {
+      userGenderErr.userGenderRequired = "Please select Gender";
+      isValid = false;
+    }
+    if (state.user.password.trim().length <= 0) {
+      userPass2Err.userPasswordRequired = "Create Password";
+      isValid = false;
+    }
+
+    setUserFnameErr(userFnameErr);
+    setUserLnameErr(userLnameErr);
+    setUserEmailErr(userEmailErr);
+    setUserPhoneErr(userPhoneErr);
+    setUserGenderErr(userGenderErr);
+    setUserPass2Err(userPass2Err);
+    return isValid;
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    let isValid = formValidation();
+    if (!isValid) {
+      return false;
+    } else {
+      dispatch(addUser(state.user));
+    }
+  }
+
   return (
     <div className="container">
       <form>
@@ -32,6 +94,9 @@ function AddUser() {
                   });
                 }}
               />
+              {Object.keys(userFnameErr).map((key) => {
+                return <div style={{ color: "red" }}>{userFnameErr[key]}</div>;
+              })}
             </div>
             <div className="col">
               <label>Last Name</label>
@@ -49,6 +114,9 @@ function AddUser() {
                   });
                 }}
               />
+              {Object.keys(userLnameErr).map((key) => {
+                return <div style={{ color: "red" }}>{userLnameErr[key]}</div>;
+              })}
             </div>
           </div>
           <br />
@@ -67,6 +135,9 @@ function AddUser() {
               });
             }}
           />
+          {Object.keys(userEmailErr).map((key) => {
+            return <div style={{ color: "red" }}>{userEmailErr[key]}</div>;
+          })}
           <br />
           <label>Phone</label>
           <input
@@ -84,6 +155,9 @@ function AddUser() {
               });
             }}
           />
+          {Object.keys(userPhoneErr).map((key) => {
+            return <div style={{ color: "red" }}>{userPhoneErr[key]}</div>;
+          })}
           <br />
           <div className="row">
             <label className="col">Gender:</label>
@@ -103,6 +177,7 @@ function AddUser() {
                   });
                 }}
               />
+
               <label className="form-check-label" htmlFor="male">
                 Male
               </label>
@@ -148,10 +223,13 @@ function AddUser() {
                 Other
               </label>
             </div>
+            {Object.keys(userGenderErr).map((key) => {
+              return <div style={{ color: "red" }}>{userGenderErr[key]}</div>;
+            })}
           </div>
           <br />
           <div className="row">
-            <div className="col">
+            {/* <div className="col">
               <label>Create Password</label>
               <input
                 type="password"
@@ -159,14 +237,17 @@ function AddUser() {
                 placeholder="********"
                 id="newPass"
               ></input>
-            </div>
+              {Object.keys(userPass1Err).map((key) => {
+                return <div style={{ color: "red" }}>{userPass1Err[key]}</div>;
+              })}
+            </div> */}
             <div className="col">
-              <label>Confirm Password</label>
+              <label>Create Password</label>
               <input
                 type="password"
                 className="form-control"
                 placeholder="********"
-                id="cnfPass"
+                id="pass"
                 value={state.user.password}
                 onChange={(e) => {
                   setState({
@@ -179,15 +260,12 @@ function AddUser() {
                   console.log(state.user.password);
                 }}
               ></input>
+              {Object.keys(userPass2Err).map((key) => {
+                return <div style={{ color: "red" }}>{userPass2Err[key]}</div>;
+              })}
             </div>
           </div>
-          <button
-            className="btn primary-btn mt-3"
-            onClick={(e) => {
-              e.preventDefault();
-              dispatch(addUser(state.user));
-            }}
-          >
+          <button className="btn primary-btn mt-3" onClick={handleSubmit}>
             Register
           </button>
         </div>

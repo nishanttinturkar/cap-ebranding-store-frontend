@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link, useParams } from "react-router-dom";
 import User from "../model/User";
+import Role from "../model/Role";
 import UserService from "../service/UserService";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser, getUserById } from "../redux/User/UserActions";
+import { addRole } from "../redux/Roles/RoleActions";
 
 function UpdateUser() {
   //const navigate = useNavigate();
@@ -13,6 +15,7 @@ function UpdateUser() {
   let navigate = useNavigate();
   let { id } = useParams();
   const [state, setState] = useState({ user: new User() });
+  const [roleState, setRole] = useState({ userRole: new Role() });
   const { user } = useSelector((state) => state.users);
   useEffect(() => {
     dispatch(getUserById(id));
@@ -25,8 +28,15 @@ function UpdateUser() {
     }
   }, [user]);
 
+  const assignRole = (role1) => {
+    let r = new Role(role1, user.id);
+    if (window.confirm(`Are you sure to assign ${role1} role to ${user.id}?`))
+      dispatch(addRole(r));
+  };
+
   return (
     <div className="container">
+      <h3>Update User</h3>
       <form>
         <div>
           <div className="row">
@@ -161,6 +171,41 @@ function UpdateUser() {
               <label className="form-check-label" htmlFor="other">
                 Other
               </label>
+            </div>
+          </div>
+          <br />
+          <div className="row">
+            <div className="col" style={{ textAlign: "center" }}>
+              {user.role == "admin" ? (
+                <p>Role: Admin</p>
+              ) : (
+                <button
+                  className="action-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    assignRole("admin");
+                  }}
+                >
+                  Make Admin
+                </button>
+              )}
+            </div>
+            <div className="col" style={{ textAlign: "center" }}>
+              {user.role == "admin" ? (
+                <p></p>
+              ) : user.role == "vendor" ? (
+                <p>Role: Vendor</p>
+              ) : (
+                <button
+                  className="action-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    assignRole("vendor");
+                  }}
+                >
+                  Make Vendor
+                </button>
+              )}
             </div>
           </div>
           <br />

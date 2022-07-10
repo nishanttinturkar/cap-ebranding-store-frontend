@@ -8,6 +8,8 @@ import Order from "./Order";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import ManageUsers from "../components/ManageUsers";
 import UpdateUser from "../components/UpdateUser";
+import Vendor from "./Vendor";
+import Profile from "../components/Profile";
 
 function Pages() {
   return (
@@ -21,6 +23,8 @@ function Pages() {
           <Route exact path="/orders" element={<Order />}></Route>
           <Route exact path="/cart" element={<Cart />}></Route>
           <Route exact path="/admin/*" element={<Admin />}></Route>
+          <Route exact path="/vendor/*" element={<Vendor />}></Route>
+          <Route exact path="/profile/*" element={<Profile />}></Route>
           <Route
             exact
             path="/admin/manage-users"

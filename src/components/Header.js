@@ -139,7 +139,7 @@ const Header = () => {
                     <li>
                       <a
                         class="dropdown-item"
-                        onClick={() => redirect(selectProfile(), "/Admin")}
+                        onClick={() => redirect(selectProfile(), "/admin")}
                       >
                         Admin Panel
                       </a>
@@ -151,7 +151,7 @@ const Header = () => {
                     <li>
                       <a
                         class="dropdown-item"
-                        onClick={() => redirect(selectProfile(), "/Admin")}
+                        onClick={() => redirect(selectProfile(), "/vendor")}
                       >
                         Vendor Panel
                       </a>
@@ -162,7 +162,7 @@ const Header = () => {
                   <li>
                     <a
                       class="dropdown-item"
-                      onClick={() => redirect(selectProfile(), "/")}
+                      onClick={() => redirect(selectLogin(), "/")}
                     >
                       Logout
                     </a>

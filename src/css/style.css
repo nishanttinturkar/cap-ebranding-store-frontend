@@ -200,3 +200,43 @@ body {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
 }
+
+.product-image{
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    
+    
+}
+.product-image:hover{
+    width: 100%;
+    cursor: pointer;
+}
+
+.image-container{
+    border: 1px solid #707070;
+    border-radius: 5px;
+
+}
+
+.action-button{
+    align-items: center;
+    width: 30%;
+    margin: 0 auto;
+    border: 2px solid #3300FF;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 6px;
+}
+
+.profile-container{
+    width: 50%;
+    margin: 60px auto;
+    padding: 30px;
+    border: 1px solid #3300FF;
+    border-radius: 10px;
+}
+
+.profile-container p {
+    font-weight: 600;
+}
