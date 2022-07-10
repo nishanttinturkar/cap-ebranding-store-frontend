@@ -18,7 +18,7 @@ function Login() {
   return (
     <form>
       <div>
-        <label>Office Email Address</label>
+        <label>Email Address</label>
         <input
           className="form-control"
           type="text"

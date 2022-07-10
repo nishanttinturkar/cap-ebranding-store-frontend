@@ -20,6 +20,9 @@ function AddUser() {
   const [userPass2Err, setUserPass2Err] = useState("");
 
   const formValidation = () => {
+    const regex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
     let isValid = true;
     const userFnameErr = {};
     const userLnameErr = {};
@@ -37,12 +40,18 @@ function AddUser() {
       userLnameErr.userLnameRequired = "User Last Name cannot be too short.";
       isValid = false;
     }
-    if (state.user.email.trim().length <= 0) {
-      userEmailErr.userEmailRequired = "User Email cannot be empty.";
+    if (
+      state.user.email.trim().length <= 0 ||
+      regex.test(state.user.email) === false
+    ) {
+      userEmailErr.userEmailRequired = "Please enter valid email id.";
       isValid = false;
     }
-    if (state.user.phone.trim().length <= 0) {
-      userPhoneErr.userPhoneRequired = "User Phone No. cannot be empty.";
+    if (
+      state.user.phone.trim().length <= 9 ||
+      state.user.phone.trim().length >= 11
+    ) {
+      userPhoneErr.userPhoneRequired = "Please Enter valid phone no.";
       isValid = false;
     }
     if (state.user.gender.trim().length <= 0) {
@@ -120,7 +129,8 @@ function AddUser() {
             </div>
           </div>
           <br />
-          <label>Office Email Address</label>
+          <label>Email Address</label>
+
           <input
             className="form-control"
             type="text"
