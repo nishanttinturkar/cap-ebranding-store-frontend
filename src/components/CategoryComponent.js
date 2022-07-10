@@ -1,66 +1,69 @@
-import React, { Component, useState, useEffect } from 'react'
-import { Table } from 'react-bootstrap'
-import Category from '../model/Category';
-import CategoryService from '../service/CategoryService'
-import './myStyle.css'
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { deleteCategory, fetchCategory, getCategoryById } from "../redux/category/categoryActions";
+import Header from "./Header";
 
-class CategoryComponent extends Component {
+const CategoryComponent = () => {
+    let dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { categories } = useSelector((state) => state.categories);
+    useEffect(() => {
+        dispatch(fetchCategory());
 
-    constructor() {
-        super();
+    }, []);
 
-        this.state = {
-            category: new Category(),
-            categories: []
-        };
+    const handleDelete = (id) => {
+        if (window.confirm("Are you sure you want to delete the user?")) {
+            dispatch(deleteCategory(id));
+        }
+    };
 
-        this.categoryService = new CategoryService();
-    }
-
-    componentDidMount() {
-        this.categoryService
-            .getAllCategories()
-            .then((result) => {
-                alert(JSON.stringify(result));
-                this.setState({ categories: result.data });
-            })
-            .catch((error) => {
-                alert(error);
-            });
-    }
-
-
-    render() {
-
-        return (
+    return (
+        <div className="container ">
             <div>
-                <div>
-                    {this.state.categories.length > 0 ? (
-                        <div className="container">
-                            <h1>Category</h1>
-                            &nbsp;
-                           
-                                <div className="my-3">
-                                    {this.state.categories.map((cat) => {
-                                       return <div className="card md-4" style={{ width: "10rem" }} key={cat.id}>
-                                            <img src={cat.imgUrl} className="card-img-top" alt="Apparel"></img>
-                                            <div className="card-body md-4">
-                                                <h5 className="card-title">{cat.name}</h5>
-                                                <p className="card-text">{cat.description}</p>
-                                                <a href="/categories" className="btn btn-sm btn-primary">Show products</a>
+                <Header />
+                <h3>Edit Category</h3>
+                <div className="row">
+                        <div className="row my-3">
+                            <div className="col">
+                                {categories.map((cat) => (
+                                    <div className="card mb-3" style={{ width: "540px" }}>
+                                        <div className="row">
+                                            <div className="col-md-4">
+                                                <img src={cat.imgUrl} className="img-fluid rounded-start" alt={cat.name} />
+                                            </div>
+                                            <div className="col-md-8">
+                                                <div className="card-body md-4">
+                                                    <h5 className="card-title">{cat.name}</h5>
+                                                    <p className="card-text">{cat.description}</p>
+                                                    <div className="row">
+                                                        <div className="col">
+                                                        <button className="btn btn-outline-warning"
+                                                            onClick={() => navigate(`/categories/update-category/${cat.id}`)}
+                                                        >Update</button>
+                                                        </div>
+                                                        <div className="col">
+                                                        <button className="btn btn-outline-danger"
+                                                            onClick={() => handleDelete(cat.id)}
+                                                        >Delete</button>
+                                                        </div>
+                                                        <div className="col">
+                                                        <button className="btn btn-outline-danger"
+                                                            onClick={() => navigate(`/categories`)}
+                                                        >Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    })}
-                                </div>
+                                    </div>
+                                ))}
                             </div>
-                       
-                    ) : (
-                        <div>No Category Found</div>
-                    )}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        )
-    }
-}
-
-export default CategoryComponent
+        </div >
+    );
+};
+export default CategoryComponent;

@@ -5,7 +5,7 @@ import isURL from "validator/lib/isURL";
 import Category from "../model/Category";
 import CategoryService from "../service/CategoryService";
 import Header from "./Header";
-import {useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addCategory } from "../redux/category/categoryActions";
 
 
@@ -18,37 +18,30 @@ function AddCategory() {
   const [catNameErr, setCategorynameErr] = useState("");
   const [catDescriptionErr, setCategoryDescriptionErr] = useState("");
   const [catImgUrlErr, setCategoryImgUrlErr] = useState("");
-  const [catUserIdErr, setCategoryUserIdErr] = useState("");
 
   const formValidation = () => {
     let isValid = true;
     const catNameErr = {};
     const catDescriptionErr = {};
     const catImgUrlErr = {};
-    const catUserIdErr = {};
-   
-    if (state.category.name.trim().length <= 0) {
+    const regex = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+
+    if (state.category.name.trim().length <= 1) {
       catNameErr.catNameRequired = "Name is required";
       isValid = false;
     }
-    if (state.category.description.trim().length <= 0) {
+    if (state.category.description.trim().length < 10) {
       catDescriptionErr.catDescriptionRequired = "Description is required";
       isValid = false;
     }
-    if (state.category.imgUrl.length === 0 ) {
+    if (state.category.imgUrl.trim().length === 0 || regex.test(state.category.imgUrl) === false) {
       catImgUrlErr.catImgUrlRequired = "Image is required";
       isValid = false;
     }
-    if (state.category.userId.trim().length <= 0) {
-      catUserIdErr.catUserIdRequired = "User Id is required";
-      isValid = false;
-    }
-    
-
+   
     setCategorynameErr(catNameErr);
     setCategoryDescriptionErr(catDescriptionErr);
     setCategoryImgUrlErr(catImgUrlErr);
-    setCategoryUserIdErr(catUserIdErr);
     return isValid;
   }
 
@@ -105,7 +98,7 @@ function AddCategory() {
                   <label>Image Url</label>
                   <input
                     className="form-control"
-                    type="url" required
+                    type="text"
                     placeholder="URL"
                     value={state.category.imgUrl}
                     onChange={(e) => {
@@ -122,50 +115,20 @@ function AddCategory() {
                   })}
                 </div>
               </div>
-              <div className="row" >
-                <div className="col m-3">
-                  <label>User Id</label>
-                  <input
-                    className="form-control "
-                    type="number"
-                    //maxLength={10}
-                    //placeholder="9876543210"
-                    value={state.category.userId}
-                    onChange={(e) => {
-                      setState({
-                        category: {
-                          ...state.category,
-                          userId: e.target.value,
-                        },
-                      });
-                    }}
-                  />
-                  {Object.keys(catUserIdErr).map((key) => {
-                    return <div style={{ color: "red" }}>{catUserIdErr[key]}</div>
-                  })}
-                </div>
-              </div>
               <br />
               <button
-                className="btn btn-outline-primary m-3"
+                className="btn btn-outline-success m-3"
                 onClick={(e) => {
                   e.preventDefault();
                   let isValid = formValidation()
                   if (!isValid) {
                     return false;
                   } else {
-                    service
-                      .addCategory(state.category)
-                      .then((result) => {
-                        alert("Category added!");
-                        navigate("/categories");
-                      })
-                      .catch((error2) => {
-                        alert(error2);
-                      });
-                      dispatch(addCategory(state.category))
+                    dispatch(addCategory(state.category));
+                    navigate("/categories")
                   }
                 }}>Add Category</button>
+              <Link className="btn btn-outline-danger m-3" to="/categories">Cancel</Link>
             </div>
           </form>
         </div>
@@ -173,14 +136,5 @@ function AddCategory() {
     </div>
   );
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addCategory: (cat) => { dispatch(addCategory(cat))},
-//   };
-// };
-
-
-// export default connect(null, mapDispatchToProps)(AddCategory);
 
 export default AddCategory

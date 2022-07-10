@@ -3,11 +3,11 @@ class CategoryService {
   
   baseUrl = `http://localhost:8091/store/category`;
   getAllCategories() {
-    alert("inside get all categories");
-    // var res = axios.get(this.baseUrl + "/129");
-    // console.log(res);
-    // return res;
-    return axios.get(this.baseUrl);
+    // alert("inside get all categories");
+    var res = axios.get(this.baseUrl );
+    console.log(res);
+    return res;
+    // return axios.get(this.baseUrl);
   }
 
   addCategory(category) {
@@ -17,15 +17,15 @@ class CategoryService {
 
   updateCategory(category) {
     alert("inside update category");
-    return axios.put(this.baseUrl+ category);
+    return axios.put(this.baseUrl, category);
   }
 
-  getCategoryById(id) {
-    return axios.get(this.baseUrl +'/'+ id);
+  getCategoryById(category) {
+    return axios.get(this.baseUrl + "/"+ category);
   }
 
-  deleteCategoryById(category) {
-    return axios.delete(this.baseUrl+"/"+category.id, category);
+  deleteCategoryById(id) {
+    return axios.delete(this.baseUrl + "/" + id);
 }
 
 }

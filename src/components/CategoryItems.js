@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import Header from '../components/Header';
+import Header from './Header';
 import { useDispatch, useSelector } from "react-redux";
 import CategoryComponents from './CategoryComponents'
 import { fetchCategory } from '../redux/category/categoryActions';
 
 const CategoryItems = () => {
     let dispatch = useDispatch();
-    const { categories } = useSelector((state) => state.category);
+    const { categories } = useSelector((state) => state.categories);
 
     useEffect(() => {
         dispatch(fetchCategory());
@@ -25,7 +25,6 @@ const CategoryItems = () => {
                             </div>
                         })}
                     </div>
-
                 </div>
             ) : (
                 <div>No Category Found</div>

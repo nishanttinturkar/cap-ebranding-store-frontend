@@ -1,9 +1,12 @@
-import {
 
-    ADD_CATEGORY_REQUEST, 
-    FETCH_CATEGORY_FAILURE, 
-    FETCH_CATEGORY_REQUEST, 
+import {
+    ADD_CATEGORY_REQUEST,
+    FETCH_CATEGORY_FAILURE,
+    FETCH_CATEGORY_REQUEST,
     FETCH_CATEGORY_SUCCESS,
+    GET_CATEGORY_BY_ID,
+    UPDATE_CATEGORY_REQUEST,
+    DELETE_CATEGORY_REQUEST,
 
 } from "./categoryTypes";
 
@@ -39,8 +42,27 @@ const reducer = (state = initialState, action) => {//state transition n home com
                 error: action.payload,
                 loading: false,
             };
+        case DELETE_CATEGORY_REQUEST:
+            return {
+                ...state,
+                category: action.payload,
+                loading: false,
+            };
+        case GET_CATEGORY_BY_ID:
+            return {
+                ...state,
+                category: action.payload,
+                loading: false,
+            };
+        case UPDATE_CATEGORY_REQUEST:
+            return {
+                ...state,
+                category: action.payload,
+                loading: false,
+            };
         default:
             return state;
     }
 };
+
 export default reducer;
