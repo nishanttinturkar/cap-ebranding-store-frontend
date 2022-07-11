@@ -64,12 +64,12 @@ function UpdateProduct() {
             </div>
           </div>
           <br />
-          <label>User Id</label>
+          <label>Vendor Id</label>
           <input
             className="form-control"
             type="number"
-            id="userId"
-            value={state.Product.userId}
+            id="vendor Id"
+            value={state.Product.vendorId}
             onChange={(e) => {
               setState({
                 Product: {

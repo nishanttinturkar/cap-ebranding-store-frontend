@@ -5,8 +5,8 @@ class ProductService {
   description = " ";
   price = " ";
   vendorId = " ";
-  createdAt = " ";
-  modifiedAt = " ";
+  // createdAt = " ";
+  // modifiedAt = " ";
   categoryId = " ";
 }
 

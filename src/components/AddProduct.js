@@ -14,17 +14,19 @@ function AddProduct() {
   const [prodNameErr, setProductnameErr] = useState("");
   const [prodDescriptionErr, setProductDescriptionErr] = useState("");
   const [prodImgUrlErr, setProductImgUrlErr] = useState("");
-  const [prodUserIdErr, setProductUserIdErr] = useState("");
+  const [prodVendorIdErr, setProductVendorIdErr] = useState("");
   const [prodPriceErr, setProductPriceErr] = useState("");
+  const [prodCategoryIdErr, setCategoryIdErr] = useState("");
 
   const formValidation = () => {
-    alert("Validation");
+    // alert("Validation");
     let isValid = true;
     const prodNameErr = {};
     const prodDescriptionErr = {};
     const prodImgUrlErr = {};
-    const prodUserIdErr = {};
+    const prodVendorIdErr = {};
     const prodPriceErr = {};
+    const prodCategoryIdErr = {};
 
     if (state.product.name.trim().length <= 0) {
       prodNameErr.prodNameRequired = "Name is required";
@@ -38,8 +40,12 @@ function AddProduct() {
       prodImgUrlErr.prodImgUrlRequired = "Image is required";
       isValid = false;
     }
-    if (state.product.userId.trim().length <= 0) {
-      prodUserIdErr.prodUserIdRequired = "User Id is required";
+    if (state.product.vendorId.trim().length <= 0) {
+      prodVendorIdErr.prodVendorIdRequired = "vendor Id is required";
+      isValid = false;
+    }
+    if (state.product.categoryId.trim().length <= 0) {
+      prodcategoryIdErr.prodCategoryIdRequired = "category Id is required";
       isValid = false;
     }
     if (state.product.price.trim().length <= 0) {
@@ -49,8 +55,10 @@ function AddProduct() {
     setProductnameErr(prodNameErr);
     setProductDescriptionErr(prodDescriptionErr);
     setProductImgUrlErr(prodImgUrlErr);
-    setProductUserIdErr(prodUserIdErr);
+    setProductVendorIdErr(prodVendorIdErr);
     setProductPriceErr(prodPriceErr);
+    setCategoryIdErr(prodCategoryIdErr);
+
     return isValid;
   };
 
@@ -156,23 +164,23 @@ function AddProduct() {
               </div>
               <div className="row">
                 <div className="col m-3">
-                  <label>User Id</label>
+                  <label>Vendor Id</label>
                   <input
                     className="form-control "
                     type="number"
-                    value={state.product.userId}
+                    value={state.product.vendorId}
                     onChange={(e) => {
                       setState({
                         product: {
                           ...state.product,
-                          userId: e.target.value,
+                          vendorId: e.target.value,
                         },
                       });
                     }}
                   />
-                  {Object.keys(prodUserIdErr).map((key) => {
+                  {Object.keys(prodVendorIdErr).map((key) => {
                     return (
-                      <div style={{ color: "red" }}>{prodUserIdErr[key]}</div>
+                      <div style={{ color: "red" }}>{prodVendorIdErr[key]}</div>
                     );
                   })}
                 </div>
@@ -192,7 +200,7 @@ function AddProduct() {
                         alert("Product added!");
                         navigate("/prodcuts");
                       })
-                      .prodch((error2) => {
+                      .catch((error2) => {
                         alert(error2);
                       });
                   }
