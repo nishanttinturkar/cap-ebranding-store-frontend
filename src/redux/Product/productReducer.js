@@ -5,6 +5,8 @@ import {
   ADD_PRODUCTS_REQUEST,
   GET_PRODUCT_BY_ID_REQUEST,
   FETCH_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_REQUEST,
+  UPDATE_PRODUCT_REQUEST,
 } from "./productTypes";
 
 const initialState = {
@@ -51,6 +53,19 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         product: action.payload,
+      };
+
+    case DELETE_PRODUCT_REQUEST:
+      return {
+        ...state,
+        product: action.payload,
+        loading: false,
+      };
+    case UPDATE_PRODUCT_REQUEST:
+      return {
+        ...state,
+        product: action.payload,
+        loading: false,
       };
 
     default:

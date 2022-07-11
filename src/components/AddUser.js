@@ -47,7 +47,8 @@ function AddUser() {
     }
     if (
       state.user.phone.trim().length <= 9 ||
-      state.user.phone.trim().length >= 11
+      state.user.phone.trim().length >= 11 ||
+      state.user.phone < 5999999999
     ) {
       userPhoneErr.userPhoneRequired = "Please Enter valid phone no.";
       isValid = false;

@@ -13,6 +13,7 @@
     "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.2.0-beta1",
+    "jasmine": "^4.2.1",
     "lottie-web": "^5.9.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -28,7 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jasmine",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -1,4 +1,5 @@
 import axios from "axios";
+// var axios = require("axios");
 class UserService {
   baseUrl = `http://localhost:8091/store/user`;
 
@@ -33,3 +34,5 @@ class UserService {
   }
 }
 export default UserService;
+
+// module.exports = { UserService };

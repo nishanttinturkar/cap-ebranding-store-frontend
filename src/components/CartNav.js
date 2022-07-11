@@ -1,10 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectShoppingCart,
-  selectShippingDetails,
-  selectPaymentOptions,
-} from "../redux/Cart/cartActions";
 
 const CartNav = () => {
   let dispatch = useDispatch();
@@ -15,31 +10,36 @@ const CartNav = () => {
       <div className="row">
         <div
           className={
-            cartNavSelector.cart ? "col cart-nav active" : "col cart-nav"
+            cartNavSelector.cart
+              ? "col cart-nav active"
+              : "col cart-nav not-active"
           }
-          onClick={() => dispatch(selectShoppingCart())}
+          // onClick={() => dispatch(selectShoppingCart())}
         >
           1. Shopping Cart
         </div>
         <div
           className={
-            cartNavSelector.shipping ? "col cart-nav active" : "col cart-nav"
+            cartNavSelector.shipping
+              ? "col cart-nav active"
+              : "col cart-nav not-active"
           }
-          onClick={() => dispatch(selectShippingDetails())}
+          // onClick={() => dispatch(selectShippingDetails())}
         >
           2. Shipping Details
         </div>
         <div
           className={
-            cartNavSelector.payment ? "col cart-nav active" : "col cart-nav"
+            cartNavSelector.payment
+              ? "col cart-nav active"
+              : "col cart-nav not-active"
           }
-          onClick={() => dispatch(selectPaymentOptions())}
+          // onClick={() => dispatch(selectPaymentOptions())}
         >
           3. Payment Options
         </div>
       </div>
     </div>
-    
   );
 };
 

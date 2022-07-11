@@ -1,22 +1,24 @@
 import {
-  ADD_PAYMENT_REQUEST,
-  FETCH_PAYMENTS_REQUEST,
+    
+    ADD_PAYMENT_REQUEST,
+    FETCH_PAYMENTS_REQUEST,
   FETCH_PAYMENTS_SUCCESS,
   FETCH_PAYMENTS_FAILURE,
   SEARCH_PAYMENTS_REQUEST,
+
+    
 } from "./paymentTypes";
 
 const initialState = {
-  loading: false,
-  payments: [],
-  payment: {},
-  error: "",
+    loading: false,
+    payments: [],
+    payment: {},
+    error: "",
 };
 
-const reducer = (state = initialState, action) => {
-  //state transition n home comp updated
-  switch (action.type) {
-    case ADD_PAYMENT_REQUEST:
+const reducer = (state = initialState, action) => {//state transition n home comp updated
+    switch (action.type) {
+        case ADD_PAYMENT_REQUEST:
       return {
         ...state,
         payments: [...state.payments, action.payload], //emp data
@@ -41,6 +43,8 @@ const reducer = (state = initialState, action) => {
       };
     default:
       return state;
-  }
-};
-export default reducer;
+    }
+   
+ };
+ export default reducer;
+            

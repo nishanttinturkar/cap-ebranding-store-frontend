@@ -28,7 +28,7 @@ const Admin = () => {
               <p>
                 Create new category, remove category, edit existing category...
               </p>
-              <Link className="link-design" to={`/admin/manage-users`}>
+              <Link className="link-design" to={`/admin/manage-category`}>
                 Manage
               </Link>
             </div>
@@ -47,7 +47,7 @@ const Admin = () => {
               <p>
                 Create new product, remove product, edit existing product...
               </p>
-              <Link className="link-design" to={`/admin/manage-users`}>
+              <Link className="link-design" to={`/vendor/manage-products`}>
                 Manage
               </Link>
             </div>
