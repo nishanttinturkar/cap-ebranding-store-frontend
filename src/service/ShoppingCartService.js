@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+var axios = require("axios")
 class ShoppingCartService {
     baseUrl = 'http://localhost:8080/store'
     getAllShoppingCart() {
@@ -26,5 +27,5 @@ class ShoppingCartService {
         return axios.get(this.baseUrl+`/cart_items/${Id}`)
     }
 }
-
-export default ShoppingCartService
+module.exports = {ShoppingCartService}
+// export default ShoppingCartService

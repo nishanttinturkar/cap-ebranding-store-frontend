@@ -255,3 +255,9 @@ body {
 .radio-card {
     width: 400px;
 }
+.right {
+    float: right;
+}
+.left{
+    float: left;
+}

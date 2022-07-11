@@ -18,5 +18,5 @@
     }
     
 }
-
-export default ShoppingCartItems
+module.exports = {ShoppingCartItems}
+// export default ShoppingCartItems

@@ -2,4 +2,5 @@ class ShoppingCart {
     id='';
     userId='';
 }
-export default ShoppingCart
+// export default ShoppingCart
+module.exports={ShoppingCart}

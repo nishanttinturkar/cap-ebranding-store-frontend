@@ -8,7 +8,7 @@ import Header from "../components/Header";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 // import ManageUsers from "../components/ManageUsers";
 // import UpdateUser from "../components/UpdateUser";
-import ShowProduct from "../components/ShowProduct";
+import Product from "./Product";
 import ViewProduct from "./ViewProduct";
 import Cart from "../Pages/Cart"
 import Payment from "../Pages/Payment";
@@ -29,7 +29,7 @@ function Pages() {
           <Route exact path="/orders" element={<Order />}></Route>
           <Route exact path="/cart" element={<Cart />}></Route>
           <Route exact path="/admin/*" element={<Admin />}></Route> */}
-          <Route exact path="/product/*" element={<ShowProduct />}/>
+          <Route exact path="/product/*" element={<Product />}/>
           <Route exact path="/cart" element={<Cart />}/>
           <Route exact path="/payment" element={<Payment />}/>
           <Route exact path="/payment/*" element={<Payment />}/>
@@ -68,11 +68,11 @@ function Pages() {
             path="/address/add"
             element={<AddAddress/>}
           ></Route>
-          <Route
+          {/* <Route
             exact
             path="/product/add"
             element={<AddProduct/>}
-          ></Route>
+          ></Route> */}
         </Routes>
       </Router>
     </div>

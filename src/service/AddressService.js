@@ -1,4 +1,6 @@
-import axios from "axios";
+// import axios from "axios";
+var axios = require("axios")
+
 class AddressService {
   baseUrl = `http://localhost:8080/store/address`;
 
@@ -25,4 +27,5 @@ class AddressService {
     return axios.get(this.baseUrl + "/" + addressId);
   }
 }
-export default AddressService;
+module.exports={AddressService}
+// export default AddressService;

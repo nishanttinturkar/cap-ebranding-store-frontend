@@ -6,4 +6,6 @@ class Address {
     postalCode = '';
     userId = '';
 }
-export default Address
+module.exports = {Address}
+
+// export default Address

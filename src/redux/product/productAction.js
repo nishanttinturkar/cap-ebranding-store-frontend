@@ -48,6 +48,7 @@ export const fetchProducts = () => {
     service.getAllProducts() 
     .then ((response) => {
         const products = response.data
+        console.log(response.data)
         dispatch(fetchProductsSuccess(products))
     })
     .catch ((error) => {

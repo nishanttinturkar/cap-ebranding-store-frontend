@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+var axios = require ("axios")
 class ProductService {
    
     baseUrl= 'http://localhost:8080/store'
@@ -12,5 +13,7 @@ class ProductService {
         console.log("inside service"+ JSON.stringify(product))
         return axios.post(this.baseUrl +'/product', product)
     }
+
 }
-export default ProductService
+module.exports = {ProductService}
+// export default ProductService

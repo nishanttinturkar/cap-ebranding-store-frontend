@@ -15,4 +15,6 @@ class Order {
     }
     
 }
-export default Order
+module.exports = {Order}
+
+// export default Order
