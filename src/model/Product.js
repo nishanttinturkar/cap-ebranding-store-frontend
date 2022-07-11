@@ -1,5 +1,5 @@
 class Product {
-    id ='';
+    id=''
     name='';
     description='';
     price='';
@@ -8,5 +8,17 @@ class Product {
     careatedAt = '';
     modifiedAt = '';
     categoryId = '';
+
+    constructor(name, description, price, vendorId, imgUrl) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.vendorId = vendorId;
+        this.imgUrl =imgUrl;
+
+        
+        
+    }
+    
 }
 export default Product

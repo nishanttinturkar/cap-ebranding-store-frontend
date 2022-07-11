@@ -17,6 +17,11 @@ function Address() {
   var userId = 154
   console.log(userId);
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate('/address/add')
+  }
+
   return (
     <div className="container">
       <div className="address-card-container">
@@ -27,7 +32,7 @@ function Address() {
               return (
                 <div className="col-sm-6">
                   <div>
-                  <input type="radio" className="btn-check" name="options" id="option1"  value ={`${address.addressLine1}, ${address.addressline2}, ${address.city}, ${address.country}. - ${address.postalCode}`}  
+                  <input type="radio" className="btn-check card-radio" name="options" id="option1"  value ={`${address.addressLine1}, ${address.addressline2}, ${address.city}, ${address.country}. - ${address.postalCode}`}  
                   onChange={(e) => {
                   localStorage.setItem("address", e.target.value)
                 }} autocomplete="off" />
@@ -49,7 +54,9 @@ function Address() {
             })}
         </div>
       </div>
-
+        <div>
+          <button className="btn btn-outline-primary mt-3" onClick={handleSubmit}> Add Address</button>
+        </div>
     </div>
   );
 }

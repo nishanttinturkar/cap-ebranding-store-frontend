@@ -14,6 +14,8 @@ import Cart from "../Pages/Cart"
 import Payment from "../Pages/Payment";
 import AddPayment from "./AddPayment";
 import Address from "./Address";
+import AddAddress from "./AddAddress"
+import AddProduct from'./AddProduct'
 
 function Pages() {
   return (
@@ -32,6 +34,8 @@ function Pages() {
           <Route exact path="/payment" element={<Payment />}/>
           <Route exact path="/payment/*" element={<Payment />}/>
           <Route exact path="/address" element={<Address />}/>
+          <Route exact path="/address/*" element={<Address />}/>
+          
 
 
 
@@ -58,6 +62,16 @@ function Pages() {
             exact
             path="/payment/add"
             element={<AddPayment/>}
+          ></Route>
+          <Route
+            exact
+            path="/address/add"
+            element={<AddAddress/>}
+          ></Route>
+          <Route
+            exact
+            path="/product/add"
+            element={<AddProduct/>}
           ></Route>
         </Routes>
       </Router>

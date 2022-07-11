@@ -57,6 +57,7 @@ export const fetchProducts = () => {
 }
 
 export const addProducts = products => {
+    console.log("Request Body: " + JSON.stringify(products));
     return (dispatch) => {
         let service = new ProductService()
         service.addProducts(products)

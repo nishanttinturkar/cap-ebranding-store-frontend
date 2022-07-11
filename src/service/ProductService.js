@@ -8,9 +8,9 @@ class ProductService {
     getAllProducts() {
         return axios.get(this.baseUrl+'/product')
     }
-    addProducts(product) {
-        console.log("inside service"+JSON.stringify(product))
-        return axios.post(this.baseUrl+'/product', product)
+    addProduct(product) {
+        console.log("inside service"+ JSON.stringify(product))
+        return axios.post(this.baseUrl +'/product', product)
     }
 }
 export default ProductService
