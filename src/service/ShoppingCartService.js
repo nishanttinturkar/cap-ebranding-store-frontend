@@ -18,7 +18,13 @@ class ShoppingCartService {
         return axios.post(this.baseUrl+ '/cart_items', ShoppingCartItem)
     }
    
-    
+    getCartById(userId) {
+        return axios.get(this.baseUrl + "/" + userId);
+      }
+
+    getCartItemById(Id) {
+        return axios.get(this.baseUrl+`/cart_items/${Id}`)
+    }
 }
 
 export default ShoppingCartService

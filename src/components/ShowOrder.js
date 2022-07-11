@@ -4,17 +4,19 @@ import Order from '../model/Order'
 import {Link} from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 import { fetchOrders } from '../redux/order/orderActions';
-
+import { getOrderByUserId } from '../redux/order/orderActions';
 
 
 
     const ShowOrder =() => {
-   let dispatch = useDispatch();
-   const {orders} = useSelector((state) => state.orders);
+        let userId = localStorage.getItem("userID");
+        const {orders} = useSelector((state) => state.orders);
+        let dispatch = useDispatch();
+        console.log(userId);
 
-   useEffect (()=> {
-    dispatch(fetchOrders())
-   }, []);
+        useEffect (()=> {
+            dispatch(fetchOrders())
+        }, []);
         
    
 

@@ -1,10 +1,11 @@
-import { FETCH_SHOPPINGCARTITEM_REQUEST, FETCH_SHOPPINGCARTITEM_SUCCESS, FETCH_SHOPPINGCARTITEM_FAILURE, ADD_SHOPPINGCARTITEM_REQUEST  } from './shoppingCartItemTypes'
+import { FETCH_SHOPPINGCARTITEM_REQUEST, FETCH_SHOPPINGCARTITEM_SUCCESS, FETCH_SHOPPINGCARTITEM_FAILURE, ADD_SHOPPINGCARTITEM_REQUEST, GET_CARTITEM_BY_ID_REQUEST, GET_TOTAL_PAYMENT  } from './shoppingCartItemTypes'
 
 const initialState = {
     loading: false,
     shoppingCartItems: [],
     shoppingCartItem: {},
-    error: ''
+    error: '',
+    totalPayment: 0
 }
 
 const shoppingCartItemReducer = (state = initialState, action) => {
@@ -31,6 +32,16 @@ const shoppingCartItemReducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
                 loading: false
+            }
+        case GET_CARTITEM_BY_ID_REQUEST:
+            return {
+                ...state,
+                cartItem: action.payload
+            }
+        case GET_TOTAL_PAYMENT:
+            return {
+                ...state,
+                totalPayment: action.payload
             }
         default: return state
     }

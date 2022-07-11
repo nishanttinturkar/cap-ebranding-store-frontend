@@ -6,6 +6,9 @@ import { Link, useParams } from "react-router-dom";
 import Product from '../model/Product'
 import { getProductById } from "../redux/product/productAction";
 import {fetchShoppingCart} from "../redux/shoppingCart/shoppingCartAction"
+import ShoppingCartItems from "../model/ShoppingCartItems";
+import { addShoppingCartItem, fetchShoppingCartItem } from "../redux/shoppingCartItem/shoppingCartItemActions";
+
 
 const ViewProduct = () => {
 
@@ -17,16 +20,28 @@ const ViewProduct = () => {
     const [state, setState] = useState({ product: new Product() });
     const { product } = useSelector((state) => state.products);
     const { shoppingCarts } = useSelector((state) => state.shoppingCarts);
+    const { shoppingCartItems } = useSelector((state) => state.shoppingCartItems);
+
     console.log(shoppingCarts)
     const cartObj = shoppingCarts.filter(cart=>cart.userId == 157)
+    const cartItem = shoppingCartItems.filter(item => item.productId == product.id)
     console.log(cartObj)
-    const cartId = cartObj[0].id
+    const cartId = cartObj[0]
     console.log(cartId)
     
     useEffect(() => {
       dispatch(getProductById(id));
         dispatch(fetchShoppingCart())
     }, []);
+
+    const addToCart = (e) => {
+        e.preventDefault()
+        let cart = new ShoppingCartItems(null, null, fruit, cartId.id, product.id );
+        console.log(cart)
+        dispatch(addShoppingCartItem(cart) )
+        dispatch(fetchShoppingCartItem())
+      };
+
 
     // console.log(product)
 
@@ -64,8 +79,11 @@ const ViewProduct = () => {
                         <hr style={{ color: 'black', height: '1px',}}/>
                         <div className="row p-2">
                             <div className="col" style= {{textAlign: 'right'}}>
-                            
-                        <button className="btn action-button" >Add to Cart</button>
+                        {   
+                        cartItem.length == 0 ? 
+                        <button className="btn action-button" onClick={addToCart} >Add to Cart</button>
+                            : <h5>item is already in the cart</h5>
+                    }
                         </div>
                         </div>
                     </div>

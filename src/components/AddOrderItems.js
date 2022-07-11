@@ -49,7 +49,7 @@ function AddOrderItems(props) {
             }}
           />
 
-            <label>Modified at</label>
+            {/* <label>Modified at</label>
                 <input
                     className="form-control"
                     type="text"
@@ -62,7 +62,7 @@ function AddOrderItems(props) {
                     },
                 });
             }}
-          />
+          /> */}
         </div>
           </div>
           <br />

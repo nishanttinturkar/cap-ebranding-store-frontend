@@ -10,6 +10,10 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 // import UpdateUser from "../components/UpdateUser";
 import ShowProduct from "../components/ShowProduct";
 import ViewProduct from "./ViewProduct";
+import Cart from "../Pages/Cart"
+import Payment from "../Pages/Payment";
+import AddPayment from "./AddPayment";
+import Address from "./Address";
 
 function Pages() {
   return (
@@ -23,8 +27,16 @@ function Pages() {
           <Route exact path="/orders" element={<Order />}></Route>
           <Route exact path="/cart" element={<Cart />}></Route>
           <Route exact path="/admin/*" element={<Admin />}></Route> */}
-          <Route exact path="/product/*" element={<ShowProduct />}></Route>
-         
+          <Route exact path="/product/*" element={<ShowProduct />}/>
+          <Route exact path="/cart" element={<Cart />}/>
+          <Route exact path="/payment" element={<Payment />}/>
+          <Route exact path="/payment/*" element={<Payment />}/>
+          <Route exact path="/address" element={<Address />}/>
+
+
+
+          
+          
           
 
           {/* <Route
@@ -41,6 +53,11 @@ function Pages() {
             exact
             path="/product/view/:id"
             element={<ViewProduct/>}
+          ></Route>
+           <Route
+            exact
+            path="/payment/add"
+            element={<AddPayment/>}
           ></Route>
         </Routes>
       </Router>

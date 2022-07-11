@@ -2,9 +2,17 @@ class OrderItems {
     id ='';
     quantity = '';
     price = '';
-    order = '';
+    orderId= '';
     productId = '';
     createdAt = '';
-    modifiedAt = '';
+
+    constructor(createdAt,orderId, price, productId, quantity) {
+        this.quantity = quantity;
+        this.price = price;
+        this.orderId = orderId;
+        this.productId = productId;
+        this.createdAt = createdAt
+    }
+    
 }
 export default OrderItems

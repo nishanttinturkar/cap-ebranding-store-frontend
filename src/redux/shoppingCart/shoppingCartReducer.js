@@ -1,4 +1,4 @@
-import { FETCH_SHOPPINGCART_REQUEST, FETCH_SHOPPINGCART_SUCCESS, FETCH_SHOPPINGCART_FAILURE, ADD_SHOPPINGCART_REQUEST } from './shoppingCartTypes'
+import { FETCH_SHOPPINGCART_REQUEST, FETCH_SHOPPINGCART_SUCCESS, FETCH_SHOPPINGCART_FAILURE, ADD_SHOPPINGCART_REQUEST, GET_CART_BY_USER_ID } from './shoppingCartTypes'
 
 const initialState = {
     loading: false,
@@ -31,6 +31,13 @@ const shoppingCartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload,
+                loading: false
+            }
+        
+        case GET_CART_BY_USER_ID:
+            return{
+                ...state,
+                cart: action.payload,
                 loading: false
             }
 

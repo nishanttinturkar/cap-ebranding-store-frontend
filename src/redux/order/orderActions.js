@@ -1,5 +1,5 @@
 import OrderService from '../../service/OrderService'
-import { FETCH_ORDERS_REQUEST, FETCH_ORDERS_SUCCESS, FETCH_ORDERS_FAILURE, ADD_ORDER_REQUEST  } from './orderTypes'
+import { FETCH_ORDERS_REQUEST, FETCH_ORDERS_SUCCESS, FETCH_ORDERS_FAILURE, ADD_ORDER_REQUEST, GET_ORDER_BY_USER_ID  } from './orderTypes'
 
 export const fetchOrdersRequest = () => {
     return {
@@ -28,6 +28,13 @@ export const addOrderRequest = order => {
     }
 }
 
+export const getOrder = order => {
+    return{
+        type: GET_ORDER_BY_USER_ID,
+        payload: order,
+    }
+}
+
 export const fetchOrders = () => {
     return (dispatch) => {
         let service =  new OrderService()
@@ -50,6 +57,20 @@ export const addOrder = order => {
             dispatch(addOrderRequest(order))
         })
         .catch((error) => {  
+        })
+    }
+}
+
+export const getOrderByUserId = (userId) => {
+    return (dispatch) => {
+        let service = new OrderService()
+        service.getOrderById(userId)
+        .then((response)=> {
+            console.log("Response: " + response);
+            dispatch(getOrder(response.data))
+        })
+        .catch((error) => {
+            dispatch(fetchOrdersFailure(error.message))
         })
     }
 }

@@ -17,7 +17,10 @@ class OrderService {
         console.log('inside service'+JSON.stringify(orderItems))
         return axios.post(this.baseUrl+'/order_items', orderItems)
     }
-    
+
+      getOrderById(userId) {
+    return axios.get(this.baseUrl + "/" + userId);
+  }
 
     getAllOrderItems() {
         return axios.get(this.baseUrl+'/order_items')

@@ -1,4 +1,4 @@
-import { FETCH_ORDERS_REQUEST, FETCH_ORDERS_SUCCESS, FETCH_ORDERS_FAILURE, ADD_ORDER_REQUEST,  } from "./orderTypes";
+import { FETCH_ORDERS_REQUEST, FETCH_ORDERS_SUCCESS, FETCH_ORDERS_FAILURE, ADD_ORDER_REQUEST, GET_ORDER_BY_USER_ID  } from "./orderTypes";
 
 const initialState = {
     loading: false,
@@ -30,6 +30,12 @@ const orderReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload,
+                loading: false
+            }
+        case GET_ORDER_BY_USER_ID:
+            return {
+                ...state,
+                order: action.payload,
                 loading: false
             }
         default: return state
