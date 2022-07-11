@@ -9,4 +9,13 @@ class Payment {
 
 }
 
-export default Payment ;
+module.exports = {
+
+
+
+    Payment
+
+
+
+}
+// export default Payment ;

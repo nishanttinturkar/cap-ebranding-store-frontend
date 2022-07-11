@@ -37,12 +37,13 @@ function Payments() {
       paymentCARD_NUMBERErr.paymentCARD_NUMBERRequired = "CARD_NUMBER should not be less than 16 digit";
       isValid = false;
     }
-    if (state.debit.cardNumber.trim().length <= 3 ||
-      state.debit.cardNumber.trim().length >= 5) {
+    if (state.debit.cardExpiry.trim().length <= 4 ||
+    state.debit.cardExpiry.trim().length >= 6 ) {
       paymentCARD_EXPIRYErr.paymentCARD_EXPIRYRequired = "CARD_EXPIRY should be 4 digit required";
       isValid = false;
     }
-    if (state.debit.cardNumber.trim().length <= 3) {
+    if (state.debit.cardCVC.trim().length <=2 ||
+    state.debit.cardCVC.trim().length >=4 ) {
       paymentCARD_CVCErr.paymentCARD_CVCRequired = "CARD_CVV is required";
       isValid = false;
     }
@@ -113,31 +114,25 @@ function Payments() {
                         })
 
                       }
-                      {/* <input type="tel" id="cc-number "  className='input-lg form-control cc-number' autocomplete="cc-number" placeholder=".... .... .... ...."name=""></input> */}
+                      
                     </div>
 
-                    {/* <div className="row">
+                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group">
                           <label for="cc-number" className="control-label"> CARD_EXPIRY</label>
-                          <input type="number" maxLength={4} className="form-control"   placeholder="MM/YY"  */}
-                    <div class="row">
+                          <input type="text"  className="form-control"   placeholder="MM/YY"  
+                   
 
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="cc-exp" class="control-label">CARD EXPIRY</label>
-                          <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp"
-                            placeholder="&bull;&bull; / &bull;&bull;" required
-
-                          //  value={state.debit.cardExpiry}
-                          //  onChange={(e) => {
-                          //    setState({
-                          //      debit: {
-                          //        ...state.debit,
-                          //        cardExpiry: e.target.value,
-                          //      },
-                          //    });
-                          //  }}
+                           value={state.debit.cardExpiry}
+                           onChange={(e) => {
+                             setState({
+                               debit: {
+                                 ...state.debit,
+                                 cardExpiry: e.target.value,
+                               },
+                             });
+                           }}
 
                           />
 
@@ -155,7 +150,7 @@ function Payments() {
                       <div className="col-md-6">
                         <div className="form-group">
                           <label for="cc-number" className="control-label"> CARD_CVC</label>
-                          <input type="number" className="form-control " maxLength={3} placeholder="123"
+                          <input type="number" className="form-control "  placeholder="123"
                             value={state.debit.cardCVC}
                             onChange={(e) => {
                               setState({
@@ -230,14 +225,15 @@ function Payments() {
                   <input type="button"
                     value="Make Payment"
                     onClick={handleSubmit}
-                    className=" btn btn-success btn-sn "
-
+                    // className=                " btn btn-success btn-sn "
+                    className="btn btn-outline-primary mr-1" href="#"
                     style={{ fontSize: ".8em" }}
                   />
 
                   <input type="button"
                     value="Cancel Payment"
-                    className=" btn btn-danger btn-sn "
+                    // className=" btn btn-danger btn-sn "
+                    class="btn btn-outline-primary" href="#"
                     style={{ fontSize: ".8em" }}
                   />
 
