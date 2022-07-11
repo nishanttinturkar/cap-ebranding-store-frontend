@@ -5,7 +5,7 @@ import ShowCategory from './components/ShowCategory';
 import UpdateCategory from './components/UpdateCategory';
 import CategoryComponent from './components/CategoryComponent';
 import Header from './components/Header';
-import CategoryComp from "./components/CategoryComp";
+// import CategoryComp from "./components/CategoryComp";
 import CategoryComponents from "./components/CategoryComponents";
 import CategoryItems from "./components/CategoryItems";
 import Categories from "./pages/Categories";

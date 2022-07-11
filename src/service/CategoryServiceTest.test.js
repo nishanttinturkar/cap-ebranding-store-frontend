@@ -18,7 +18,7 @@ test('Testing add category function.', async () => {
     });
 })
 
-test('Testing find category by id function.', async () => {
+test('Testing find category by id function.', async ()=> {
     let service = new CategoryService();
     await service.getCategoryById(297).then((result) => {
         let category = result.data;

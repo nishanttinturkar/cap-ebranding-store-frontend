@@ -1,4 +1,5 @@
 import axios from "axios";
+// var axios = require("axios")
 class CategoryService {
   
   baseUrl = `http://localhost:8091/store/category`;
@@ -16,7 +17,7 @@ class CategoryService {
   }
 
   updateCategory(category) {
-    alert("inside update category");
+    // alert("inside update category");
     return axios.put(this.baseUrl, category);
   }
 
@@ -29,4 +30,9 @@ class CategoryService {
 }
 
 }
+
+// module.exports = {
+//   CategoryService
+// }
+
 export default CategoryService;

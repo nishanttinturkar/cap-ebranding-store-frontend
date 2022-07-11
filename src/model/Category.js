@@ -11,5 +11,8 @@ class Category {
   //   this.imgUrl = imgUrl;
   // }
 }
+// module.exports = {
+//   Category
+// }
 
 export default Category;
