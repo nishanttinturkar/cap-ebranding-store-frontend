@@ -1,4 +1,5 @@
 import axios from "axios";
+// var axios = require("axios");
 class CategoryService {
   baseUrl = `http://localhost:8091/store/category`;
   getAllCategories() {
@@ -27,4 +28,8 @@ class CategoryService {
     return axios.delete(this.baseUrl + "/" + id);
   }
 }
+// module.exports = {
+//   CategoryService,
+// };
+
 export default CategoryService;

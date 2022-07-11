@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+var axios = require("axios");
 class OrderService {
   baseUrl = "http://localhost:8091/store";
   getAllOrders() {
@@ -33,4 +34,5 @@ class OrderService {
   //     return axios.post(this.baseUrl, orderItems)
   // }
 }
-export default OrderService;
+module.exports = { OrderService };
+// export default OrderService;
