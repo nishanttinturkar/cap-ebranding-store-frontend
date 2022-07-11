@@ -30,19 +30,19 @@ function Payments() {
     const paymentCARD_NUMBERErr = {};
     const paymentCARD_EXPIRYErr = {};
     const paymentCARD_CVCErr = {};
-    
+
 
     if (state.debit.cardNumber.trim().length <= 15 ||
-    state.debit.cardNumber.trim().length >= 17) {
+      state.debit.cardNumber.trim().length >= 17) {
       paymentCARD_NUMBERErr.paymentCARD_NUMBERRequired = "CARD_NUMBER should not be less than 16 digit";
       isValid = false;
     }
     if (state.debit.cardNumber.trim().length <= 3 ||
-    state.debit.cardNumber.trim().length >= 5) {
+      state.debit.cardNumber.trim().length >= 5) {
       paymentCARD_EXPIRYErr.paymentCARD_EXPIRYRequired = "CARD_EXPIRY should be 4 digit required";
       isValid = false;
     }
-    if (state.debit.cardNumber.trim().length<=3 ) {
+    if (state.debit.cardNumber.trim().length <= 3) {
       paymentCARD_CVCErr.paymentCARD_CVCRequired = "CARD_CVV is required";
       isValid = false;
     }
@@ -95,23 +95,23 @@ function Payments() {
 
                       <label for="cc-number" className="control-label"> CARD_NUMBER</label>
                       <input type="number" maxLength={16} className="form-control " placeholder="8459 1783 1541 2222"
-                      value={state.debit.cardNumber}
-                      onChange={(e) => {
-                        setState({
-                          debit: {
-                            ...state.debit,
-                            cardNumber: e.target.value,
-                          },
-                        });
-                      }}
+                        value={state.debit.cardNumber}
+                        onChange={(e) => {
+                          setState({
+                            debit: {
+                              ...state.debit,
+                              cardNumber: e.target.value,
+                            },
+                          });
+                        }}
 
                       />
                       {
-                        Object.keys(paymentCARD_NUMBERErr).map((key)=>{
-                          return <div style={{color:"red"}}>{paymentCARD_NUMBERErr[key]}
+                        Object.keys(paymentCARD_NUMBERErr).map((key) => {
+                          return <div style={{ color: "red" }}>{paymentCARD_NUMBERErr[key]}
                           </div>
                         })
-                        
+
                       }
                       {/* <input type="tel" id="cc-number "  className='input-lg form-control cc-number' autocomplete="cc-number" placeholder=".... .... .... ...."name=""></input> */}
                     </div>
@@ -121,14 +121,14 @@ function Payments() {
                         <div className="form-group">
                           <label for="cc-number" className="control-label"> CARD_EXPIRY</label>
                           <input type="number" maxLength={4} className="form-control"   placeholder="MM/YY"  */}
-                          <div class="row">
+                    <div class="row">
 
-<div class="col-md-6">
-     <div class="form-group">
-        <label for="cc-exp" class="control-label">CARD EXPIRY</label>
-        <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp"
-         placeholder="&bull;&bull; / &bull;&bull;" required
-      
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="cc-exp" class="control-label">CARD EXPIRY</label>
+                          <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp"
+                            placeholder="&bull;&bull; / &bull;&bull;" required
+
                           //  value={state.debit.cardExpiry}
                           //  onChange={(e) => {
                           //    setState({
@@ -138,14 +138,14 @@ function Payments() {
                           //      },
                           //    });
                           //  }}
-                          
+
                           />
-                              
+
                           {
-                          Object.keys(paymentCARD_EXPIRYErr).map((key) => {
-                return <div style={{ color: "red" }}>{paymentCARD_EXPIRYErr[key]}
-                </div>;
-              })}
+                            Object.keys(paymentCARD_EXPIRYErr).map((key) => {
+                              return <div style={{ color: "red" }}>{paymentCARD_EXPIRYErr[key]}
+                              </div>;
+                            })}
 
 
                         </div>
@@ -155,23 +155,23 @@ function Payments() {
                       <div className="col-md-6">
                         <div className="form-group">
                           <label for="cc-number" className="control-label"> CARD_CVC</label>
-                          <input type="number" className="form-control " maxLength={3} placeholder="123" 
-                          value={state.debit.cardCVC}
-                          onChange={(e) => {
-                            setState({
-                              debit: {
-                                ...state.debit,
-                                cardCVC: e.target.value,
-                              },
-                            });
-                          }}
+                          <input type="number" className="form-control " maxLength={3} placeholder="123"
+                            value={state.debit.cardCVC}
+                            onChange={(e) => {
+                              setState({
+                                debit: {
+                                  ...state.debit,
+                                  cardCVC: e.target.value,
+                                },
+                              });
+                            }}
                           />
 
                           {
-                          Object.keys(paymentCARD_CVCErr).map((key) => {
-                return <div style={{ color: "red" }}>{paymentCARD_CVCErr[key]}
-                </div>;
-              })}
+                            Object.keys(paymentCARD_CVCErr).map((key) => {
+                              return <div style={{ color: "red" }}>{paymentCARD_CVCErr[key]}
+                              </div>;
+                            })}
                         </div>
                       </div>
                     </div>
@@ -190,7 +190,7 @@ function Payments() {
         </div>
       </div>
       <br />
-      <div>
+      {/* <div>
         <div className="padding">
           <div className="row">
             <div className="container d-flexvjustify-content-center">
@@ -208,7 +208,7 @@ function Payments() {
 
                       <label for="cc-upi" className="control-label">upi</label>
                       <input type="text" name="number" className="form-control inputtxt" placeholder="ganga@oksbi" />
-                      {/* <input type="tel" id="cc-number "  className='input-lg form-control cc-number' autocomplete="cc-number" placeholder=".... .... .... ...."name=""></input> */}
+
 
                     </div>
                   </div>
@@ -218,7 +218,7 @@ function Payments() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <br />
       <div className="padding">
         <div className='row' >
@@ -231,7 +231,7 @@ function Payments() {
                     value="Make Payment"
                     onClick={handleSubmit}
                     className=" btn btn-success btn-sn "
-                    
+
                     style={{ fontSize: ".8em" }}
                   />
 
@@ -242,7 +242,7 @@ function Payments() {
                   />
 
 
-          
+
 
                 </div>
               </div>
