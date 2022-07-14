@@ -23,7 +23,7 @@ const Admin = () => {
         <br />
         <div className="row">
           <div className="col">
-            <div className=" action-card">
+            <div className="action-card">
               <h4>Manage Categories</h4>
               <p>
                 Create new category, remove category, edit existing category...

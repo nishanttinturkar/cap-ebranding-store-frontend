@@ -11,5 +11,5 @@ class User {
   createdAt = "";
 }
 
-// export default User;
-module.exports = { User };
+export default User;
+// module.exports = { User };
